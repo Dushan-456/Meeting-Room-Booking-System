@@ -511,7 +511,7 @@ echo "<div class=\"minicalendars\">\n";
 echo "</div>\n";
 
 echo "<div class=\"view_container js_hidden\">\n";
-echo "<div class=\"date_heading\">$date_heading</div>";
+echo "<div class=\"date_heading\">$date_heading<span id=\"digital-clock\"></span></div>";
 echo get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room);
 
 echo message_html();
