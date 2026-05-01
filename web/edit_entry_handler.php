@@ -722,11 +722,11 @@ if (!in_array($room, $rooms))
 $area = mrbsGetRoomArea($room);
 
 // Now construct the new query string
-$vars = array('view'      => $view ?? $default_view,
+$vars = array('view'      => 'day',
               'view_all'  => $view_all ?? $default_view_all,
-              'year'      => $year,
-              'month'     => $month,
-              'day'       => $day,
+              'year'      => $start_year,
+              'month'     => $start_month,
+              'day'       => $start_day,
               'area'      => $area,
               'room'      => $room);
 
