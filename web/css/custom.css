@@ -445,13 +445,14 @@ body:has(#logon) {
    ========================================================================== */
 
 body.edit_entry {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 body.edit_entry .contents {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
     display: flex !important;
     justify-content: center !important;
     padding: 40px 20px !important;
@@ -495,13 +496,21 @@ body.edit_entry #main fieldset legend {
 /* Form Rows - targeting the direct container of label + input */
 body.edit_entry #main.standard div.field_div,
 body.edit_entry #main.standard fieldset > div {
-    display: flex !important;
+    display: flex; /* No !important to allow JS toggling */
     flex-direction: row !important;
     align-items: flex-start !important;
     margin-bottom: 24px !important;
     float: none !important;
     width: 100% !important;
     clear: both !important;
+}
+
+/* Force Hide everything JS wants to hide */
+body.edit_entry #main.standard [style*="display:none"],
+body.edit_entry #main.standard [style*="display: none"],
+body.edit_entry .js_none,
+body.edit_entry .js_hidden {
+    display: none !important;
 }
 
 body.edit_entry #main.standard label:not(.group label) {
@@ -588,7 +597,7 @@ body.edit_entry .select2-container--default.select2-container--focus .select2-se
 
 /* Checkboxes and Radio groups */
 body.edit_entry #main .group {
-    display: flex !important;
+    display: flex;
     flex-wrap: wrap !important;
     gap: 20px !important;
     flex: 1 !important;
