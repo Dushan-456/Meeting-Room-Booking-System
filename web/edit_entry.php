@@ -590,6 +590,7 @@ function get_field_custom(string $key, bool $disabled=false)
 {
   global $custom_fields, $custom_fields_map;
   global $is_mandatory_field;
+  global $max_capacity;
 
   // TODO: have a common way of generating custom fields for all tables
 
@@ -647,6 +648,23 @@ function get_field_custom(string $key, bool $disabled=false)
     $step = pow(10, -$decimal_places);
     $step = number_format($step, $decimal_places);
     $field->setControlAttribute('step', $step);
+  }
+
+  if ($key === 'seat_count')
+  {
+    $field->setControlAttribute('max', $max_capacity);
+    
+    $hint = new \MRBS\Form\ElementDiv();
+    $hint->setAttribute('class', 'field_hint')
+         ->setText("Max room capacity: " . $max_capacity);
+    $field->addElement($hint);
+
+    $error = new \MRBS\Form\ElementDiv();
+    $error->setAttribute('class', 'field_error')
+          ->setAttribute('id', 'seat_count_error')
+          ->setAttribute('style', 'display: none; color: #ff5252; font-weight: bold; margin-top: 5px;')
+          ->setText("Error: Number of participants cannot exceed " . $max_capacity . "!");
+    $field->addElement($error);
   }
 
   if ($class == 'FieldTextarea')
@@ -1544,6 +1562,13 @@ $enable_periods ? toPeriodString($start_min, $duration, $dur_units) : toTimeStri
 if (empty($selected_rooms))
 {
   $selected_rooms = array($room_id);
+}
+
+// Get the capacity of the selected room(s)
+$max_capacity = 0;
+if (!empty($selected_rooms))
+{
+  $max_capacity = db()->query1("SELECT MAX(capacity) FROM " . _tbl('room') . " WHERE id IN (" . implode(',', $selected_rooms) . ")");
 }
 
 // Now that we know all the data to fill the form with we start drawing it
