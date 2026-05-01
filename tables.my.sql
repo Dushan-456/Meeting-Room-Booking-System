@@ -125,6 +125,14 @@ CREATE TABLE mrbs_repeat
   ical_uid       varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' NOT NULL,
   ical_sequence  smallint DEFAULT 0 NOT NULL,
   seat_count     int DEFAULT 0 NOT NULL,
+  event_type     varchar(50) DEFAULT NULL,
+  internet       tinyint DEFAULT 0 NOT NULL,
+  laptop         tinyint DEFAULT 0 NOT NULL,
+  sound_system   tinyint DEFAULT 0 NOT NULL,
+  projector      tinyint DEFAULT 0 NOT NULL,
+  tv             tinyint DEFAULT 0 NOT NULL,
+  hybrid_facility tinyint DEFAULT 0 NOT NULL,
+  meeting_link   text DEFAULT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
@@ -163,6 +171,14 @@ CREATE TABLE mrbs_entry
   registration_closes         int DEFAULT 0 NOT NULL COMMENT 'Seconds before the start_time',
   registration_closes_enabled tinyint DEFAULT 0 NOT NULL,
   seat_count                  int DEFAULT 0 NOT NULL,
+  event_type                  varchar(50) DEFAULT NULL,
+  internet                    tinyint DEFAULT 0 NOT NULL,
+  laptop                      tinyint DEFAULT 0 NOT NULL,
+  sound_system                tinyint DEFAULT 0 NOT NULL,
+  projector                   tinyint DEFAULT 0 NOT NULL,
+  tv                          tinyint DEFAULT 0 NOT NULL,
+  hybrid_facility             tinyint DEFAULT 0 NOT NULL,
+  meeting_link                text DEFAULT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
