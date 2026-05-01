@@ -112,3 +112,6 @@ $is_mandatory_field['entry.seat_count'] = true;
 
 // Vocab Overrides
 $vocab_override['en']['entry.seat_count'] = "How many participants attend this?";
+
+// Custom JavaScript
+$custom_js_url = 'js/custom.js';
