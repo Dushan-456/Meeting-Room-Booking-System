@@ -90,3 +90,8 @@ $db_persist = false;
    or areadefaults.inc.php.  */
 
 
+// Mandatory Fields
+$is_mandatory_field['entry.seat_count'] = true;
+
+// Vocab Overrides
+$vocab_override['en']['entry.seat_count'] = "How many participants attend this?";
