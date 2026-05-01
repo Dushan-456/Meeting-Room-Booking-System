@@ -1,11 +1,16 @@
 /* 
  * Custom Styling for MRBS 
+ * - Tentative bookings are highlighted in red.
+ * - Confirmation field is hidden for non-admins to enforce tentative status.
  */
+ body{
+    background-color: #5f6470 !important;
+ }
 
-/* --- Tentative Booking Colors --- */
-
-/* Tentative INTERNAL (Type I) - Red */
-.tentative.I, .tentative.I a, .tentative.I .booking {
+/* Tentative INTERNAL Bookings (Type I): Premium Red Style */
+.tentative.I,
+.tentative.I a,
+.tentative.I .booking {
     background: #ff5252 !important;
     background-color: #ff5252 !important;
     background-image: none !important;
@@ -14,18 +19,22 @@
     color: #ffffff !important;
 }
 
-/* Tentative EXTERNAL (Type E) - Amber */
-.tentative.E, .tentative.E a, .tentative.E .booking {
-    background: #ffb300 !important;
-    background-color: #ffb300 !important;
+/* Tentative EXTERNAL Bookings (Type E): Premium Orange/Amber Style */
+.tentative.E,
+.tentative.E a,
+.tentative.E .booking {
+    background: #ff5e00 !important;
+    background-color: #ff5e00 !important;
     background-image: none !important;
-    border: 1px solid #ff8f00 !important;
+    border: 1px solid #ff5e00 !important;
     opacity: 1 !important;
     color: #ffffff !important;
 }
 
-/* Fallback for other tentative */
-.tentative, .tentative a, .tentative .booking {
+/* Fallback for other tentative bookings */
+.tentative,
+.tentative a,
+.tentative .booking {
     background: #ff5252 !important;
     background-color: #ff5252 !important;
     background-image: none !important;
@@ -34,154 +43,192 @@
     color: #ffffff !important;
 }
 
-.tentative a, .tentative a div {
+/* Ensure the link inside tentative booking is white and readable */
+.tentative a,
+.tentative a div {
     color: #ffffff !important;
     font-weight: 500 !important;
     text-decoration: none;
 }
 
-/* --- Add Entry Page Modernization --- */
-
-body.edit_entry {
-    background-color: #f8fafc !important;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+.tentative a:hover {
+    text-decoration: underline;
 }
 
-/* Style the main form as a card */
-body.edit_entry form#main {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
+/* Hide confirmation toggle for non-admins to prevent them from confirming their own bookings */
+/* We target the data-is-book-admin attribute on the body tag added by MRBS */
+body[data-is-book-admin="false"] .field_confirmed {
+    display: none !important;
 }
 
-/* Style the page title */
-body.edit_entry h2 {
-    max-width: 1100px;
-    margin: 30px auto 10px auto;
-    font-size: 1.8rem;
-    color: #1e293b;
-    padding-left: 10px;
-}
-
-body.edit_entry fieldset {
-    border: none;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-body.edit_entry fieldset legend {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #334155;
-    width: 100%;
-    border-bottom: 2px solid #f1f5f9;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
+/* Custom field hints (e.g., Max Capacity) */
+.field_hint {
     display: block;
-    float: none;
-}
-
-/* Form rows */
-body.edit_entry form#main div {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    gap: 15px;
-}
-
-body.edit_entry form#main label {
-    flex: 0 0 200px;
-    font-weight: 600;
-    color: #475569;
-}
-
-/* Inputs and Selects */
-body.edit_entry form#main input[type="text"],
-body.edit_entry form#main input[type="number"],
-body.edit_entry form#main select,
-body.edit_entry form#main textarea {
-    padding: 10px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 1rem;
-    min-width: 200px;
-    outline: none;
-    transition: all 0.2s;
-}
-
-body.edit_entry form#main input:focus,
-body.edit_entry form#main select:focus,
-body.edit_entry form#main textarea:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-}
-
-/* Layout for rows with multiple controls (e.g. Start/End) */
-body.edit_entry form#main div input,
-body.edit_entry form#main div select {
-    flex: 0 1 auto;
-}
-
-/* Special widths */
-body.edit_entry form#main input#name,
-body.edit_entry form#main textarea {
-    flex: 1 1 400px;
-    max-width: 700px;
-}
-
-/* Checkboxes and their labels */
-body.edit_entry form#main input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-body.edit_entry form#main input[type="checkbox"] + label {
-    flex: none;
-    margin-left: 0;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
     font-weight: 500;
 }
 
-/* Submit buttons area */
-body.edit_entry div.submit_buttons {
-    justify-content: flex-end;
-    padding-top: 30px;
-    border-top: 1px solid #f1f5f9;
+/* Premium Header Redesign */
+header.banner {
+    background: #0f172a !important; /* Slate 900 - professional dark navy */
+    color: #f8fafc !important;
+    padding: 0.8rem 2rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 2.5rem !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
-body.edit_entry input[type="submit"] {
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
+/* Logo and Branding */
+header.banner .logo img {
+    height: 52px !important;
+    width: auto !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
 }
 
-body.edit_entry input[type="submit"][name="save_button"] {
-    background-color: #2563eb;
+header.banner .company {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+header.banner .company a {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    color: #38bdf8 !important; /* Vibrant Sky Blue */
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+header.banner .company a:hover {
+    color: #7dd3fc !important;
+    filter: brightness(1.1) !important;
+}
+
+header.banner .company span {
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+}
+
+/* Navigation & Menu */
+header.banner .container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: auto !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    gap: 2rem !important;
+}
+
+header.banner .menu {
+    display: flex !important;
+    gap: 0.75rem !important;
+}
+
+header.banner .menu a {
+    color: #e2e8f0 !important;
+    text-decoration: none !important;
+    padding: 0.4rem 0.8rem !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    border-radius: 0.5rem !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+header.banner .menu a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
     color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-body.edit_entry input[type="submit"][name="save_button"]:hover {
-    background-color: #1d4ed8;
+/* Authentication & Notifications */
+header.banner .logon {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
 }
 
-body.edit_entry input[type="submit"][name="back_button"] {
-    background-color: #64748b;
-    color: #ffffff !important;
+header.banner .logon input[type="submit"] {
+    background: #ef4444 !important; /* Vibrant Red */
 }
 
-body.edit_entry input[type="submit"][name="back_button"]:hover {
-    background-color: #475569;
+header.banner .logon input[type="submit"]:hover {
+    background: #dc2626 !important; /* Darker Red on hover */
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
 }
 
-/* Hide confirmation toggle for non-admins */
-body[data-is-book-admin="false"] .field_confirmed {
-    display: none !important;
+header.banner .logon form#show_my_entries input[type="submit"] {
+    background: transparent !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.85rem !important;
+}
+
+header.banner .logon a.notification {
+    background: linear-gradient(to bottom right, #ef4444, #b91c1c) !important;
+    color: white !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 12px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4) !important;
+    animation: pulse 2s infinite !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Global Form Elements in Header */
+header.banner input[type="submit"] {
+    background: #3b82f6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.4rem 1rem !important;
+    border-radius: 0.6rem !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+header.banner input[type="submit"]:hover {
+    background: #2563eb !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Date & Search Inputs */
+header.banner input[type="text"],
+header.banner input.navigation,
+header.banner input[type="search"] {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 0.6rem !important;
+    font-size: 0.8rem !important;
+    transition: all 0.2s !important;
+}
+
+header.banner input:focus {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
 }
