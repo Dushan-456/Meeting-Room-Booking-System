@@ -590,6 +590,7 @@ function get_field_custom(string $key, bool $disabled=false)
 {
   global $custom_fields, $custom_fields_map;
   global $is_mandatory_field;
+  global $radio_options;
   global $max_capacity;
 
   // TODO: have a common way of generating custom fields for all tables
@@ -603,9 +604,14 @@ function get_field_custom(string $key, bool $disabled=false)
 
   $custom_field = $custom_fields_map[$key];
 
+  // Check if it should be a radio group
+  if (!empty($radio_options["entry.$key"]))
+  {
+    $class = 'FieldInputRadioGroup';
+  }
   // Output a checkbox if it's a boolean or integer <= 2 bytes (which we will
   // assume are intended to be booleans)
-  if (($custom_field['nature'] == 'boolean') ||
+  elseif (($custom_field['nature'] == 'boolean') ||
     (($custom_field['nature'] == 'integer') && isset($custom_field['length']) && ($custom_field['length'] <= 2)) )
   {
     $class = 'FieldInputCheckbox';
@@ -630,11 +636,14 @@ function get_field_custom(string $key, bool $disabled=false)
                     'value'    => (isset($custom_fields[$key])) ? $custom_fields[$key] : NULL,
                     'required' => !empty($is_mandatory_field["entry.$key"]),
                     'disabled' => $disabled);
-    return get_field_entry_input($params);
+    $field = get_field_entry_input($params);
+    $field->addClass($key . '_field');
+    return $field;
   }
 
   $full_class = __NAMESPACE__ . "\\Form\\$class";
   $field = new $full_class();
+  $field->addClass($key . '_field');
 
   $field->setLabel(get_loc_field_name(_tbl('entry'), $key))
         ->setControlAttributes(array('name'     => VAR_PREFIX . $key,
@@ -681,6 +690,12 @@ function get_field_custom(string $key, bool $disabled=false)
   elseif ($class == 'FieldInputCheckbox')
   {
     $field->setControlChecked(!empty($custom_fields[$key]));
+  }
+  elseif ($class == 'FieldInputRadioGroup')
+  {
+    $options = $radio_options["entry.$key"];
+    $value = (isset($custom_fields[$key])) ? $custom_fields[$key] : null;
+    $field->addRadioOptions($options, VAR_PREFIX . $key, $value, true, $disabled, !empty($is_mandatory_field["entry.$key"]));
   }
   else
   {
