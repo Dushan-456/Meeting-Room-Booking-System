@@ -181,7 +181,12 @@ abstract class CalendarMultislot extends Calendar
             ' class="' . $booking['type'] . '"' .
             ' data-id="' . $booking['id'] . '"' .
             ' data-type="' . $booking['type'] . '">';
-          $html .= escape_html($booking['name']) . '</a>';
+          $html .= escape_html($booking['name']);
+          if (!empty($booking['hybrid_facility']))
+          {
+            $html .= '<span class="hybrid_badge">Hybrid</span>';
+          }
+          $html .= '</a>';
           $html .= "</div>";
         }
       }
