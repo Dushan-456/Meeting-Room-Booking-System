@@ -29,7 +29,6 @@ body {
   color: <?php echo $standard_font_color ?>;
   font-family: <?php echo $standard_font_family ?>;
   background-color: <?php echo $body_background_color ?>;
-  line-height: 1.5;
 }
 
 .unsupported_browser body > * {
@@ -61,18 +60,8 @@ body {
   font-style: italic;
 }
 
-input, textarea, select {
+input, textarea {
   box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  padding: 0.4rem 0.6rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: <?php echo $banner_back_color ?>;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .hidden_field {
@@ -114,37 +103,8 @@ button.image {
   padding: 0;
 }
 
-input[type="submit"], input[type="button"], button:not(.image) {
-  background-color: <?php echo $banner_back_color ?>;
-  color: #ffffff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-input[type="submit"]:hover, input[type="button"]:hover, button:not(.image):hover {
-  background-color: <?php echo $banner_nav_hover_color ?>;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-input[type="submit"]:active, input[type="button"]:active, button:not(.image):active {
-  transform: translateY(0);
-}
-
 .contents, .banner {
   padding: 0 1.5rem;
-}
-
-.banner {
-  background-color: <?php echo $banner_back_color ?>;
-  color: <?php echo $banner_font_color ?>;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  margin-bottom: 1rem;
 }
 
 .contents {
@@ -257,20 +217,19 @@ img {
 a:link {
   color: <?php echo $anchor_link_color ?>;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: bold;
 }
 
 a:visited {
   color: <?php echo $anchor_visited_color ?>;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold
 }
 
 a:hover {
-  color: <?php echo $banner_back_color ?>;
-  text-decoration: none;
-  font-weight: 500;
+  color: <?php echo $anchor_hover_color ?>;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 span.not_allowed {
@@ -387,14 +346,14 @@ fieldset {
   margin: 0;
   padding: 0;
   border: 0;
-  border-radius: 12px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 fieldset.admin {
-  width: 100%; padding: 1.5rem;
+  width: 100%; padding: 0 1.0em 1.0em 1.0em;
   border: 1px solid <?php echo $admin_table_border_color ?>;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 fieldset fieldset {
@@ -649,24 +608,22 @@ nav.view div.container {
 
 nav.view a, nav.arrow a {
   background: linear-gradient(<?php echo implode(', ', $button_color_stops)?>);
-  border: 1px solid #e2e8f0;
-  border-right: 0;
+  border-right: thin solid <?php echo $body_background_color ?>;
   cursor: pointer;
   line-height: 1.8em;
-  font-weight: 500;
+  font-weight: normal;
   text-align: center;
-  transition: all 0.2s;
 }
 
 nav.view a:first-child, nav.arrow a:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 nav.view a:last-child, nav.arrow a:last-child {
-  border-right: 1px solid #e2e8f0;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-right: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 <?php // Don't display the year button on narrow screens ?>
@@ -925,9 +882,7 @@ table.dwm_main {
   border-color: <?php echo $main_table_border_color ?>;
   border-width: <?php echo $main_table_border_width ?>px;
   border-style: solid;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
 }
 
 .dwm_main th, .dwm_main td {
@@ -1003,13 +958,12 @@ table.dwm_main {
 .dwm_main thead th,
 .dwm_main tfoot th {
   font-size: small;
-  font-weight: 600;
+  font-weight: normal;
   vertical-align: top;
-  padding: 0.8rem 0.5rem;
+  padding: 0.2em;
   color: <?php echo $standard_font_color ?>;
   background-color: #ffffff;
   background-clip: padding-box; <?php // to keep Edge happy when using position: sticky ?>
-  border-bottom: 2px solid <?php echo $main_table_border_color ?>;
 }
 
 .style_weekends .dwm_main thead th.weekend:not(.highlight),

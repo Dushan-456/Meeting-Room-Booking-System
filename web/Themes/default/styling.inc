@@ -7,19 +7,19 @@ namespace MRBS;
 // ***** COLOURS ************************
 // Colours used in MRBS.    All the colours are defined here as PHP variables
 
-$body_background_color          = "#f8fafc";    // background colour for the main body
-$standard_font_color            = "#1e293b";    // default font color
+$body_background_color          = "#f9fbfc";    // background colour for the main body
+$standard_font_color            = "#0B263B";    // default font color
 $header_font_color              = "#ffffff";    // font color for text in headers
-$highlight_font_color           = "#e11d48";    // used for highlighting text (eg links, errors)
+$highlight_font_color           = "#ff0066";    // used for highlighting text (eg links, errors)
 $color_key_font_color           = $standard_font_color;    // used in the colour key table
 
-$banner_back_color              = "#3b82f6";    // background colour for banner
+$banner_back_color              = "#1976D2";    // background colour for banner
 $banner_border_color            = $body_background_color;    // border colour for banner
 $banner_font_color              = $header_font_color;       // font colour for banner
-$banner_nav_hover_color         = "#2563eb";   // background colour when header links are hovered over
+$banner_nav_hover_color         = 'darkblue';   // background colour when header links are hovered over
 
-$minical_view_color             = "#1e293b";    // used for highlighting the dates in the current view
-$minical_today_color            = "#bae6fd";    // used for highlighting today
+$minical_view_color             = "#2b3a42";    // used for highlighting the dates in the current view
+$minical_today_color            = "#bdd4de";    // used for highlighting today
 
 $header_back_color              = $banner_back_color;  // background colour for headers
 $flatpickr_highlight_color      = $banner_back_color;  // used for highlighting the date
@@ -27,19 +27,19 @@ $flatpickr_highlight_color      = $banner_back_color;  // used for highlighting 
 $admin_table_header_back_color  = $header_back_color;     // background colour for header and also border colour for table cells
 $admin_table_header_sep_color   = $body_background_color; // vertical separator colour in header
 $admin_table_header_font_color  = $header_font_color;     // font colour for header
-$admin_table_border_color       = "#e2e8f0";
+$admin_table_border_color       = "#C3CCD3";
 
-$main_table_border_color        = "#e2e8f0";    // border colour for day/week/month tables - outside
-$main_table_header_border_color = "#e2e8f0";    // border colour for day/week/month tables - header
+$main_table_border_color        = "#dddddd";    // border colour for day/week/month tables - outside
+$main_table_header_border_color = "#dddddd";    // border colour for day/week/month tables - header
 $main_table_body_h_border_color = "#ffffff";    // border colour for day/week/month tables - body, horizontal
-$main_table_body_v_border_color = "#e2e8f0";    // border colour for day/week/month tables - body, vertical
+$main_table_body_v_border_color = "#e4e4e4";    // border colour for day/week/month tables - body, vertical
 $main_table_month_color         = "#ffffff";    // background colour for days in the month view
-$main_table_month_weekend_color = "#f8fafc";    // background colour for weekends in the month view
-$main_table_month_holiday_color = "#f1f5f9";    // background colour for holidays in the month view
-$main_table_month_weekend_holiday_color = "#e2e8f0";    // background colour for weekend holidays in the month view
-$main_table_month_invalid_color = "#cbd5e1";    // background colour for invalid days in the month view
-$main_table_slot_invalid_color  = "#cbd5e1";    // background colour for invalid slots in the day and week views
-$main_table_slot_private_type_color = "#cbd5e1";          // background colour when the type has to kept private
+$main_table_month_weekend_color = "#f4f4f4";    // background colour for weekends in the month view
+$main_table_month_holiday_color = "#e8e8e8";    // background colour for holidays in the month view
+$main_table_month_weekend_holiday_color = "#dfdfdf";    // background colour for weekend holidays in the month view
+$main_table_month_invalid_color = "#d1d9de";    // background colour for invalid days in the month view
+$main_table_slot_invalid_color  = "#d1d9de";    // background colour for invalid slots in the day and week views
+$main_table_slot_private_type_color = "#d1d9de";          // background colour when the type has to kept private
 $main_table_labels_back_color   = $header_back_color;     // background colour for the row labels column
 $timeline_color                 = $header_back_color;
 
@@ -59,7 +59,7 @@ $report_h3_border_color         = "#879AA8";              // border colour for <
 
 $search_table_border_color      = $standard_font_color;
 
-$site_faq_entry_border_color    = "#e2e8f0";              // used to separate individual FAQ's in help.php
+$site_faq_entry_border_color    = "#C3CCD3";              // used to separate individual FAQ's in help.php
 
 $anchor_link_color              = $standard_font_color;        // link color
 $anchor_visited_color           = $anchor_link_color;          // link color (visited)
@@ -86,34 +86,34 @@ $row_even_color_weekend_holiday = "#dfdfdf"; // even rows in the day and week vi
 $row_odd_color_weekend_holiday  = "#cfcfcf"; // odd rows in the day and week views for weekend holidays
 
 $zebra_even_color = "#ffffff";  // Colour for even rows in other tables (eg Search, Report and Users)
-$zebra_odd_color  = '#f8fafc';  // Colour for odd rows in other tables (eg Search, Report and Users)
+$zebra_odd_color  = '#e2e4ff';  // Colour for odd rows in other tables (eg Search, Report and Users)
 
-$help_highlight_color           = "#ffe4e6";        // highlighting text on the help page
+$help_highlight_color           = "#ffe6f0";        // highlighting text on the help page
 
 // Button colours
-$button_color_stops = array('#ffffff', '#f1f5f9');  // linear gradient colour stops
-$button_inset_color = '#cbd5e1';
+$button_color_stops = array('#eeeeee', '#cccccc');  // linear gradient colour stops
+$button_inset_color = 'darkblue';
 
 // These are the colours used for distinguishing between the different types of bookings in the main
 // displays in the day, week and month views
 $color_types = array(
-    'A' => "#fef08a", // soft yellow
-    'B' => "#a7f3d0", // soft teal
-    'C' => "#fde047", // yellow
-    'D' => "#bae6fd", // soft sky blue
-    'E' => "#99f6e4", // soft cyan
-    'F' => "#c7d2fe", // soft indigo
-    'G' => "#bbf7d0", // soft green
-    'H' => "#e9d5ff", // soft purple
-    'I' => "#d9f99d", // soft lime
-    'J' => "#fecaca"); // soft red
+    'A' => "#ffff99",
+    'B' => "#99cccc",
+    'C' => "#ffffcd",
+    'D' => "#cde6e6",
+    'E' => "#6dd9c4",
+    'F' => "#82adad",
+    'G' => "#ccffcc",
+    'H' => "#d9d982",
+    'I' => "#99cc66",
+    'J' => "#e6ffe6");
 
 // colours used for pending.php and bookings awaiting approval
-$outstanding_color         = "#fde047";     // font colour for the outstanding reservations message in the header
+$outstanding_color         = "#FFF36C";     // font colour for the outstanding reservations message in the header
 $pending_header_back_color = $header_back_color; // background colour for series headers
-$series_entry_back_color   = "#fef08a";     // background colour for entries in a series
-$pending_control_color     = "#fde047";     // background colour for the series +/- controls in pending.php
-$attention_color           = '#f97316';  // background colour for the number of bookings awaiting approval
+$series_entry_back_color   = "#FFFCDA";     // background colour for entries in a series
+$pending_control_color     = "#FFF36C";     // background colour for the series +/- controls in pending.php
+$attention_color           = 'darkorange';  // background colour for the number of bookings awaiting approval
 
 // ***** DIMENSIONS *******************
 $banner_border_width          = '0';  // (px)  border width for the outside of the banner
@@ -124,5 +124,5 @@ $main_cell_height             = '1.5em';  // height of the cells in the main day
 
 
 // ***** FONTS ************************
-$standard_font_family  = '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+$standard_font_family  = "Arial, 'Arial Unicode MS', Verdana, sans-serif";
 
