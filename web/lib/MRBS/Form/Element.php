@@ -361,7 +361,7 @@ class Element
   }
 
 
-  public function addRadioOptions(array $options, string $name, $checked=null, $associative=null, bool $disabled=false): Element
+  public function addRadioOptions(array $options, string $name, $checked=null, $associative=null, bool $disabled=false, bool $required=false): Element
   {
     // Trivial case
     if (empty($options))
@@ -383,7 +383,8 @@ class Element
       $radio = new ElementInputRadio();
       $radio->setAttributes(array('name'     => $name,
                                   'value'    => $key,
-                                  'disabled' => $disabled));
+                                  'disabled' => $disabled,
+                                  'required' => $required));
       if (isset($checked) && ($key == $checked))
       {
         $radio->setAttribute('checked');
