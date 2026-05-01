@@ -551,6 +551,7 @@ function get_field_confirmation_status(bool $value, bool $disabled=false) : ?Fie
   $value = ($value) ? 0 : 1;
 
   $field = new FieldInputRadioGroup();
+  $field->setAttribute('class', 'field_confirmed');
 
   $field->setLabel(get_vocab('confirmation_status'))
         ->addRadioOptions($options, 'confirmed', $value, true, $disabled);
@@ -1411,7 +1412,7 @@ else
   $type          = (empty($is_mandatory_field['entry.type'])) ? $default_type : '';
   $room_id       = $room;
   $private       = $private_default;
-  $tentative     = !$confirmed_default;
+  $tentative     = !is_book_admin() || !$confirmed_default;
   $allow_registration           = (bool) $allow_registration_default;
   $registrant_limit             = (int) $registrant_limit_default;
   $registrant_limit_enabled     = (bool) $registrant_limit_enabled_default;
