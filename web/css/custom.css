@@ -1117,3 +1117,730 @@ body.view_entry #approve_buttons input[type="submit"]:hover {
         display: none !important; /* Hide headers on mobile for simplicity */
     }
 }
+
+/* =============================================================================
+   Scheduling Conflict Page Modernization (edit_entry_handler.php)
+   ========================================================================== */
+
+
+
+body.edit_entry_handler h2 {
+    color: #f87171 !important; /* Brighter red for conflict */
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 25px !important;
+    text-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+    text-align: center !important;
+}
+
+body.edit_entry_handler p {
+    font-size: 1.1rem !important;
+    color: #94a3b8 !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+    max-width: 800px !important;
+}
+
+body.edit_entry_handler ul {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 30px !important;
+    list-style: none !important;
+    max-width: 800px !important;
+    width: 100% !important;
+    margin-bottom: 40px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.edit_entry_handler li {
+    padding: 15px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #f1f5f9 !important;
+    line-height: 1.7 !important;
+    font-size: 1rem !important;
+}
+
+body.edit_entry_handler li:last-child {
+    border-bottom: none !important;
+}
+
+body.edit_entry_handler li a {
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    padding: 2px 4px !important;
+    transition: color 0.2s ease !important;
+}
+
+body.edit_entry_handler li a:hover {
+    color: #7dd3fc !important;
+    text-decoration: underline !important;
+}
+
+body.edit_entry_handler #submit_buttons {
+    display: flex !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 800px !important;
+}
+
+body.edit_entry_handler #submit_buttons form {
+    display: flex !important;
+    gap: 15px !important;
+}
+
+body.edit_entry_handler input[type="submit"] {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    border: none !important;
+    padding: 14px 35px !important;
+    border-radius: 14px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3) !important;
+    font-size: 1rem !important;
+}
+
+body.edit_entry_handler input[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4) !important;
+    background: #7dd3fc !important;
+}
+
+body.edit_entry_handler input[name="back_button"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+body.edit_entry_handler input[name="back_button"]:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 600px) {
+    body.edit_entry_handler #submit_buttons form {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    body.edit_entry_handler input[type="submit"] {
+        width: 100% !important;
+    }
+}
+
+
+/* =============================================================================
+   Rooms Admin Page Modernization (admin.php)
+   ========================================================================== */
+
+body.admin .contents {
+    color: #f8fafc !important;
+    padding-top: 20px !important;
+    max-width: 65% !important;
+    margin: auto !important;
+}
+
+body.admin .contents h2 {
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    margin: 30px 0 20px 0 !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.admin .contents p {
+    color: #94a3b8 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Area Select Form */
+body.admin .contents fieldset {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-bottom: 30px !important;
+}
+
+body.admin .contents label {
+    color: #f1f5f9 !important;
+    font-weight: 600 !important;
+    margin-right: 10px !important;
+}
+
+/* Data Tables */
+body.admin .contents .datatable_container {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 20px !important;
+}
+
+body.admin .contents table.admin_table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+}
+
+body.admin .contents table.admin_table th {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.05em !important;
+    padding: 15px !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    text-align: left !important;
+}
+
+body.admin .contents table.admin_table td {
+    padding: 15px !important;
+    color: #000000 !important; /* Black text for clarity */
+    background: rgba(255, 255, 255, 0.9) !important; /* Light background for rows */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    vertical-align: middle !important;
+}
+
+body.admin .contents table.admin_table tr:hover td {
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+body.admin .contents table.admin_table a {
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: color 0.2s ease !important;
+}
+
+body.admin .contents table.admin_table a:hover {
+    color: #7dd3fc !important;
+    text-decoration: underline !important;
+}
+
+/* Action Buttons (Edit/Delete) */
+body.admin .contents .button {
+    opacity: 0.8 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Specific Red Filter for Delete Icon */
+body.admin .contents input[src*="delete"] {
+    filter: invert(27%) sepia(91%) saturate(7452%) hue-rotate(354deg) brightness(91%) contrast(114%) !important;
+}
+
+/* Edit icon styling */
+body.admin .contents a[href*="edit"] img,
+body.admin .contents input[src*="edit"] {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(186deg) brightness(101%) contrast(101%) !important; /* Blue-ish */
+}
+
+body.admin .contents .button:hover {
+    opacity: 1 !important;
+}
+
+/* Form Controls */
+body.admin .contents select,
+body.admin .contents input[type="text"],
+body.admin .contents input[type="number"] {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    padding: 10px 15px !important;
+    border-radius: 10px !important;
+    font-size: 0.95rem !important;
+}
+
+
+
+/* Pagination and Search */
+body.admin .contents .dataTables_info,
+body.admin .contents .dataTables_paginate,
+body.admin .contents .dataTables_length,
+body.admin .contents .dataTables_filter {
+ color: #94a3b8 !important;
+ margin-top: 15px !important;
+ margin-bottom: 15px !important;
+}
+
+body.admin .contents .dataTables_wrapper .dataTables_filter input {
+    border: none !important;
+    padding: 14px 35px !important;
+    border-radius: 14px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3) !important;
+    font-size: 1rem !important;
+}
+
+body.edit_entry_handler input[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4) !important;
+    background: #7dd3fc !important;
+}
+
+body.edit_entry_handler input[name="back_button"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+body.edit_entry_handler input[name="back_button"]:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 600px) {
+    body.edit_entry_handler #submit_buttons form {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    body.edit_entry_handler input[type="submit"] {
+        width: 100% !important;
+    }
+}
+
+
+/* =============================================================================
+   Rooms Admin Page Modernization (admin.php)
+   ========================================================================== */
+
+body.admin .contents {
+    color: #f8fafc !important;
+    padding-top: 20px !important;
+    max-width: 85%;
+    margin: auto;
+}
+
+body.admin .contents h2 {
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    margin: 30px 0 20px 0 !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.admin .contents p {
+    color: #94a3b8 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Area Select Form */
+body.admin .contents fieldset {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-bottom: 30px !important;
+}
+
+body.admin .contents label {
+    color: #f1f5f9 !important;
+    font-weight: 600 !important;
+    margin-right: 10px !important;
+}
+
+/* Data Tables */
+body.admin .contents .datatable_container {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 20px !important;
+}
+
+body.admin .contents table.admin_table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+}
+
+body.admin .contents table.admin_table th {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.05em !important;
+    padding: 15px !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    text-align: left !important;
+}
+
+body.admin .contents table.admin_table td {
+    padding: 15px !important;
+    color: #000000 !important; /* Black text for clarity */
+    background: rgba(255, 255, 255, 0.9) !important; /* Light background for rows */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    vertical-align: middle !important;
+}
+
+body.admin .contents table.admin_table tr:hover td {
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+body.admin .contents table.admin_table a {
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    transition: color 0.2s ease !important;
+}
+
+body.admin .contents table.admin_table a:hover {
+    color: #7dd3fc !important;
+    text-decoration: underline !important;
+}
+
+/* Action Buttons (Edit/Delete) */
+body.admin .contents .button {
+    opacity: 0.8 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Specific Red Filter for Delete Icon */
+body.admin .contents input[src*="delete"] {
+    filter: invert(27%) sepia(91%) saturate(7452%) hue-rotate(354deg) brightness(91%) contrast(114%) !important;
+}
+
+/* Edit icon styling */
+body.admin .contents a[href*="edit"] img,
+body.admin .contents input[src*="edit"] {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(186deg) brightness(101%) contrast(101%) !important; /* Blue-ish */
+}
+
+body.admin .contents .button:hover {
+    opacity: 1 !important;
+}
+
+/* Form Controls */
+body.admin .contents select,
+body.admin .contents input[type="text"],
+body.admin .contents input[type="number"] {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    padding: 10px 15px !important;
+    border-radius: 10px !important;
+    font-size: 0.95rem !important;
+}
+
+body.admin .contents input[type="submit"] {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3) !important;
+}
+
+body.admin .contents input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4) !important;
+    background: #7dd3fc !important;
+}
+
+/* Pagination and Search */
+body.admin .contents .dataTables_info,
+body.admin .contents .dataTables_paginate,
+body.admin .contents .dataTables_length,
+body.admin .contents .dataTables_filter {
+ color: #94a3b8 !important;
+ margin-top: 15px !important;
+ margin-bottom: 15px !important;
+}
+
+body.admin .contents .dataTables_wrapper .dataTables_filter input {
+ margin-left: 10px !important;
+}
+
+
+
+/* =============================================================================
+   Edit Room Page Modernization (edit_room.php)
+   ========================================================================== */
+
+#edit_room {
+    max-width: 800px !important;
+    margin: 40px auto !important;
+    color: #f8fafc !important;
+}
+
+#edit_room fieldset {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+#edit_room legend {
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    padding: 0 20px !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    float: none !important;
+    margin-bottom: 20px !important;
+}
+
+#edit_room fieldset > div {
+    display: grid !important;
+    grid-template-columns: 200px 1fr !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+}
+
+#edit_room label {
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+}
+
+#edit_room input[type="text"],
+#edit_room input[type="number"],
+#edit_room textarea,
+#edit_room select {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+}
+
+#edit_room input:focus,
+#edit_room select:focus,
+#edit_room textarea:focus {
+    border-color: #38bdf8 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Radio groups */
+#edit_room div:has(input[type="radio"]) {
+    display: flex !important;
+    gap: 20px !important;
+}
+
+#edit_room label:has(input[type="radio"]) {
+    color: #f1f5f9 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+}
+
+/* Checkboxes */
+#edit_room input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    accent-color: #38bdf8 !important;
+}
+
+/* Buttons container */
+#edit_room div.buttons {
+    display: flex !important;
+    gap: 15px !important;
+    justify-content: flex-end !important;
+    margin-top: 20px !important;
+}
+
+#edit_room input[type="submit"] {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    border: none !important;
+    padding: 12px 30px !important;
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3) !important;
+}
+
+#edit_room input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4) !important;
+    background: #7dd3fc !important;
+}
+
+#edit_room input[formaction*="admin.php"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+/* =============================================================================
+   Utility Pages (Users, Report, Import, Help)
+   ========================================================================== */
+
+body.edit_users .contents,
+body.report .contents,
+body.import .contents,
+body.help .contents {
+    color: #f1f5f9 !important;
+    max-width: 1100px !important;
+    margin: 30px auto !important;
+    padding: 30px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.edit_users h2,
+body.report h2,
+body.import h2,
+body.help h2 {
+    color: #ffffff !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 25px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-bottom: 10px !important;
+}
+
+/* Tables in utility pages */
+body.edit_users table,
+body.report table,
+body.import table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+body.edit_users th,
+body.report th,
+body.import th {
+    background: rgba(56, 189, 248, 0.1) !important;
+    color: #38bdf8 !important;
+    padding: 14px !important;
+    text-align: left !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+body.edit_users td {
+    padding: 12px 14px !important;
+    color: #000000 !important; /* Black text for visibility */
+    background: rgba(255, 255, 255, 0.9) !important; /* Light background for rows */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.edit_users tr:hover td {
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+body.report td,
+body.import td {
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #e2e8f0 !important;
+}
+
+body.report tr:hover td,
+body.import tr:hover td {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Help page specific links */
+body.help a {
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+
+body.help a:hover {
+    text-decoration: underline !important;
+}
+
+/* Form elements consistency */
+body.edit_users input,
+body.report input,
+body.import input,
+body.edit_users select,
+body.report select,
+body.import select,
+body.edit_users textarea,
+body.report textarea,
+body.import textarea {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    border-radius: 10px !important;
+    font-size: 0.95rem !important;
+    transition: all 0.2s ease !important;
+}
+
+body.edit_users input:focus,
+body.report input:focus,
+body.import input:focus {
+    border-color: #38bdf8 !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    outline: none !important;
+}
+
+body.edit_users input[type="submit"],
+body.report input[type="submit"],
+body.import input[type="submit"] {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+body.edit_users input[type="submit"]:hover,
+body.report input[type="submit"]:hover,
+body.import input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3) !important;
+    filter: brightness(1.1) !important;
+}
+
+@media (max-width: 768px) {
+    body.edit_users .contents,
+    body.report .contents,
+    body.import .contents,
+    body.help .contents {
+        margin: 15px !important;
+        padding: 20px !important;
+    }
+}
