@@ -33,10 +33,24 @@ $room_id = $data['room_id'];
 $mail_previous = array();
 $start_times = array();
 
-// Give the return URL a query string if it doesn't already have one
+// Get the date of the booking for redirection
+$booking_date = getdate($data['start_time']);
+$b_year  = $booking_date['year'];
+$b_month = $booking_date['mon'];
+$b_day   = $booking_date['mday'];
+
+// Force the return URL to the day view for the specific day of the booking
 if (mb_strpos($returl, '?') === false)
 {
-  $returl .= "?year=$year&month=$month&day=$day&area=$area&room=$room";
+  $returl .= "?view=day&year=$b_year&month=$b_month&day=$b_day&area=$area&room=$room";
+}
+else
+{
+  // If there's already a query string, ensure we use the day view and the booking's date
+  // Strip existing view, year, month, day parameters
+  $returl = preg_replace('/([?&])(view|year|month|day)=[^&]+(&?)/', '$1', $returl);
+  $returl = rtrim($returl, '?&');
+  $returl .= (mb_strpos($returl, '?') === false ? '?' : '&') . "view=day&year=$b_year&month=$b_month&day=$b_day";
 }
 
 
