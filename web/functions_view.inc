@@ -341,7 +341,18 @@ function create_details_body(array $data, bool $as_html=false, bool $keep_privat
           }
         }
         $class = ($keep_private && isset($is_private_field["entry.$key"]) && $is_private_field["entry.$key"]) ? "private" : "";
-        $tbody .= create_details_row($label, $value, $as_html, $class);
+        
+        // Custom logic to make the meeting link clickable if it's a valid URL
+        if ($as_html && $key === 'meeting_link' && !empty($value) && (preg_match('/^https?:\/\//i', (string)$value)))
+        {
+          $escaped_value = escape_html($value);
+          $link_html = '<a href="' . $escaped_value . '" target="_blank" class="meeting_link_button">Click to Join Meeting</a>';
+          $tbody .= "<tr>\n<td>$label</td>\n<td" . ((!empty($class)) ? " class=\"$class\"" : '') . ">$link_html</td>\n</tr>\n";
+        }
+        else
+        {
+          $tbody .= create_details_row($label, $value, $as_html, $class);
+        }
         break;
     }  // switch
   }  // foreach
