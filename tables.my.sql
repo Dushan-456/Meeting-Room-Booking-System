@@ -124,6 +124,7 @@ CREATE TABLE mrbs_repeat
   info_text      text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   ical_uid       varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' NOT NULL,
   ical_sequence  smallint DEFAULT 0 NOT NULL,
+  seat_count     int DEFAULT 0 NOT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
@@ -161,6 +162,7 @@ CREATE TABLE mrbs_entry
   registration_opens_enabled  tinyint DEFAULT 0 NOT NULL,
   registration_closes         int DEFAULT 0 NOT NULL COMMENT 'Seconds before the start_time',
   registration_closes_enabled tinyint DEFAULT 0 NOT NULL,
+  seat_count                  int DEFAULT 0 NOT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
