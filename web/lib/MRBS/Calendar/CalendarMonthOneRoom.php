@@ -226,7 +226,12 @@ class CalendarMonthOneRoom extends Calendar
           }
           $html .= '<a href="' . escape_html($booking_link) . '"' .
             ' title="' . escape_html($title_text) . '">';
-          $html .= escape_html($display_text) . '</a>';
+          $html .= escape_html($display_text);
+          if (!empty($entry['hybrid_facility']))
+          {
+            $html .= '<span class="hybrid_badge mini">Hybrid</span>';
+          }
+          $html .= '</a>';
           $html .= "</div>\n";
         }
         $html .= "</div>\n";
