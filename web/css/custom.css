@@ -1,16 +1,16 @@
 /* 
  * Custom Styling for MRBS 
- * - Tentative bookings are highlighted in red.
- * - Confirmation field is hidden for non-admins to enforce tentative status.
+ * - Bookings awaiting approval are highlighted in red/orange.
+ * - Confirmation field is hidden for non-admins to enforce approval workflow.
  */
  body{
     background-color: #5f6470 !important;
  }
 
-/* Tentative INTERNAL Bookings (Type I): Premium Red Style */
-.tentative.I,
-.tentative.I a,
-.tentative.I .booking {
+/* Awaiting Approval INTERNAL Bookings (Type I): Premium Red Style */
+.awaiting_approval.I,
+.awaiting_approval.I a,
+.awaiting_approval.I .booking {
     background: #ff5252 !important;
     background-color: #ff5252 !important;
     background-image: none !important;
@@ -19,10 +19,10 @@
     color: #ffffff !important;
 }
 
-/* Tentative EXTERNAL Bookings (Type E): Premium Orange/Amber Style */
-.tentative.E,
-.tentative.E a,
-.tentative.E .booking {
+/* Awaiting Approval EXTERNAL Bookings (Type E): Premium Orange Style */
+.awaiting_approval.E,
+.awaiting_approval.E a,
+.awaiting_approval.E .booking {
     background: #ff5e00 !important;
     background-color: #ff5e00 !important;
     background-image: none !important;
@@ -31,10 +31,10 @@
     color: #ffffff !important;
 }
 
-/* Fallback for other tentative bookings */
-.tentative,
-.tentative a,
-.tentative .booking {
+/* Fallback for other bookings awaiting approval */
+.awaiting_approval,
+.awaiting_approval a,
+.awaiting_approval .booking {
     background: #ff5252 !important;
     background-color: #ff5252 !important;
     background-image: none !important;
@@ -43,15 +43,15 @@
     color: #ffffff !important;
 }
 
-/* Ensure the link inside tentative booking is white and readable */
-.tentative a,
-.tentative a div {
+/* Ensure the link inside awaiting_approval booking is white and readable */
+.awaiting_approval a,
+.awaiting_approval a div {
     color: #ffffff !important;
     font-weight: 500 !important;
     text-decoration: none;
 }
 
-.tentative a:hover {
+.awaiting_approval a:hover {
     text-decoration: underline;
 }
 
