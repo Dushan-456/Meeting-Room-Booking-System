@@ -1,0 +1,187 @@
+/* 
+ * Custom Styling for MRBS 
+ */
+
+/* --- Tentative Booking Colors --- */
+
+/* Tentative INTERNAL (Type I) - Red */
+.tentative.I, .tentative.I a, .tentative.I .booking {
+    background: #ff5252 !important;
+    background-color: #ff5252 !important;
+    background-image: none !important;
+    border: 1px solid #d32f2f !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+}
+
+/* Tentative EXTERNAL (Type E) - Amber */
+.tentative.E, .tentative.E a, .tentative.E .booking {
+    background: #ffb300 !important;
+    background-color: #ffb300 !important;
+    background-image: none !important;
+    border: 1px solid #ff8f00 !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+}
+
+/* Fallback for other tentative */
+.tentative, .tentative a, .tentative .booking {
+    background: #ff5252 !important;
+    background-color: #ff5252 !important;
+    background-image: none !important;
+    border: 1px solid #d32f2f !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+}
+
+.tentative a, .tentative a div {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    text-decoration: none;
+}
+
+/* --- Add Entry Page Modernization --- */
+
+body.edit_entry {
+    background-color: #f8fafc !important;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Style the main form as a card */
+body.edit_entry form#main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+/* Style the page title */
+body.edit_entry h2 {
+    max-width: 1100px;
+    margin: 30px auto 10px auto;
+    font-size: 1.8rem;
+    color: #1e293b;
+    padding-left: 10px;
+}
+
+body.edit_entry fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+body.edit_entry fieldset legend {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #334155;
+    width: 100%;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: block;
+    float: none;
+}
+
+/* Form rows */
+body.edit_entry form#main div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+body.edit_entry form#main label {
+    flex: 0 0 200px;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* Inputs and Selects */
+body.edit_entry form#main input[type="text"],
+body.edit_entry form#main input[type="number"],
+body.edit_entry form#main select,
+body.edit_entry form#main textarea {
+    padding: 10px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-width: 200px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+body.edit_entry form#main input:focus,
+body.edit_entry form#main select:focus,
+body.edit_entry form#main textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Layout for rows with multiple controls (e.g. Start/End) */
+body.edit_entry form#main div input,
+body.edit_entry form#main div select {
+    flex: 0 1 auto;
+}
+
+/* Special widths */
+body.edit_entry form#main input#name,
+body.edit_entry form#main textarea {
+    flex: 1 1 400px;
+    max-width: 700px;
+}
+
+/* Checkboxes and their labels */
+body.edit_entry form#main input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+body.edit_entry form#main input[type="checkbox"] + label {
+    flex: none;
+    margin-left: 0;
+    font-weight: 500;
+}
+
+/* Submit buttons area */
+body.edit_entry div.submit_buttons {
+    justify-content: flex-end;
+    padding-top: 30px;
+    border-top: 1px solid #f1f5f9;
+}
+
+body.edit_entry input[type="submit"] {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+body.edit_entry input[type="submit"][name="save_button"] {
+    background-color: #2563eb;
+    color: #ffffff !important;
+}
+
+body.edit_entry input[type="submit"][name="save_button"]:hover {
+    background-color: #1d4ed8;
+}
+
+body.edit_entry input[type="submit"][name="back_button"] {
+    background-color: #64748b;
+    color: #ffffff !important;
+}
+
+body.edit_entry input[type="submit"][name="back_button"]:hover {
+    background-color: #475569;
+}
+
+/* Hide confirmation toggle for non-admins */
+body[data-is-book-admin="false"] .field_confirmed {
+    display: none !important;
+}
