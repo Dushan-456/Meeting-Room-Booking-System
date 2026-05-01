@@ -19,7 +19,7 @@ CREATE TABLE mrbs_area
   disabled                    tinyint DEFAULT 0 NOT NULL,
   area_name                   varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   sort_key                    varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' NOT NULL,
-  timezone                    varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  timezone                    varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'Asia/Colombo',
   area_admin_email            text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   resolution                  int,
   default_duration            int,
@@ -268,3 +268,6 @@ INSERT INTO mrbs_variables (variable_name, variable_content)
   VALUES ( 'db_version', '82');
 INSERT INTO mrbs_variables (variable_name, variable_content)
   VALUES ( 'local_db_version', '1');
+
+# Set default timezone for all areas to Sri Lanka
+UPDATE mrbs_area SET timezone = 'Asia/Colombo';
