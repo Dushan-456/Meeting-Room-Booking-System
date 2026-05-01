@@ -339,6 +339,20 @@ if (!$is_ajax)
       }
     }
   }
+
+  // Check seat_count against room capacity
+  if (isset($custom_fields['seat_count']) && ($custom_fields['seat_count'] !== ''))
+  {
+    $seat_count = (int)$custom_fields['seat_count'];
+    foreach ($rooms as $room_id)
+    {
+      $capacity = (int)db()->query1("SELECT capacity FROM " . _tbl('room') . " WHERE id=? LIMIT 1", array($room_id));
+      if ($seat_count > $capacity)
+      {
+        invalid_booking("Seat count ($seat_count) cannot exceed room capacity ($capacity).");
+      }
+    }
+  }
 }
 
 if (!isset($type))
