@@ -109,9 +109,41 @@ $custom_css_url = 'css/custom.css';
 
 // Mandatory Fields
 $is_mandatory_field['entry.seat_count'] = true;
+$is_mandatory_field['entry.event_type'] = true;
+$is_mandatory_field['entry.internet'] = true;
+$is_mandatory_field['entry.laptop'] = true;
+$is_mandatory_field['entry.sound_system'] = true;
+$is_mandatory_field['entry.projector'] = true;
+$is_mandatory_field['entry.tv'] = true;
+$is_mandatory_field['entry.hybrid_facility'] = true;
 
 // Vocab Overrides
 $vocab_override['en']['entry.seat_count'] = "How many participants attend this?";
+$vocab_override['en']['entry.event_type'] = "Event Type";
+$vocab_override['en']['entry.internet'] = "Internet Facility";
+$vocab_override['en']['entry.laptop'] = "Laptop or Computer";
+$vocab_override['en']['entry.sound_system'] = "Sound System with Mic";
+$vocab_override['en']['entry.projector'] = "Projector";
+$vocab_override['en']['entry.tv'] = "TV Facility";
+$vocab_override['en']['entry.hybrid_facility'] = "Is this event required Zoom or hybrid meeting facility?";
+$vocab_override['en']['entry.meeting_link'] = "Zoom or Google Meet Link";
+
+// Select Options
+$select_options['entry.event_type'] = array(
+    'Lecture' => 'Lecture',
+    'Exam' => 'Exam',
+    'Workshop' => 'Workshop',
+    'Meeting' => 'Meeting',
+    'Other' => 'Other'
+);
+
+// Radio Options for Facilities
+$radio_options['entry.internet'] = array(1 => 'Yes', 0 => 'No');
+$radio_options['entry.laptop'] = array(1 => 'Yes', 0 => 'No');
+$radio_options['entry.sound_system'] = array(1 => 'Yes', 0 => 'No');
+$radio_options['entry.projector'] = array(1 => 'Yes', 0 => 'No');
+$radio_options['entry.tv'] = array(1 => 'Yes', 0 => 'No');
+$radio_options['entry.hybrid_facility'] = array(1 => 'Yes', 0 => 'No');
 
 // Custom JavaScript
 $custom_js_url = 'js/custom.js';
