@@ -3,8 +3,19 @@
  * - Bookings awaiting approval are highlighted in red/orange.
  * - Confirmation field is hidden for non-admins to enforce approval workflow.
  */
- body{
-    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
+ html, body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+ }
+
+ .contents {
+    float: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
  }
 
 /* Awaiting Approval INTERNAL Bookings (Type I): Premium Red Style */
@@ -64,11 +75,26 @@ body[data-is-book-admin="false"] .field_confirmed {
 /* Custom field hints (e.g., Max Capacity) */
 .field_hint {
     display: block;
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #94a3b8; /* Light slate - legible on dark BG */
+    margin-top: 6px;
     font-style: italic;
-    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Validation Errors */
+.field_error {
+    display: block;
+    font-size: 0.85rem;
+    color: #ff5252; /* Vibrant Red */
+    margin-top: 6px;
+    font-weight: 600;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Premium Header Redesign */
@@ -254,7 +280,7 @@ body {
 }
 
 body:has(#logon) {
-    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
     font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -445,7 +471,7 @@ body:has(#logon) {
    ========================================================================== */
 
 body.edit_entry {
-    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -480,7 +506,26 @@ body.edit_entry #main fieldset {
     padding: 0 !important;
     margin: 0 0 40px 0 !important;
 }
+.date_heading{
+    color: #cbd5e1;
+    font-weight: 700;
+    display: flex;
+ 
+    margin: 20px auto !important;
+    text-align: center !important;
+    width: 100% !important;
+    font-size: 1.1rem;
+}
 
+#digital-clock {
+    color: #38bdf8;
+    font-family: 'Courier New', Courier, monospace; /* Digital look */
+    font-weight: 700;
+    width: auto !important;
+    width: 300px !important;
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
 body.edit_entry #main fieldset legend {
     font-size: 1.5rem !important;
     font-weight: 700 !important;
@@ -507,10 +552,20 @@ body.edit_entry #main.standard fieldset > div {
 
 /* Force Hide everything JS wants to hide */
 body.edit_entry #main.standard [style*="display:none"],
-body.edit_entry #main.standard [style*="display: none"],
-body.edit_entry .js_none,
-body.edit_entry .js_hidden {
+body.edit_entry #main.standard [style*="display: none"] {
     display: none !important;
+}
+
+/* Specific layout for Seat Count field to stack hints/errors below input */
+.seat_count_field {
+    flex-wrap: wrap !important;
+}
+
+.seat_count_field .field_hint,
+.seat_count_field .field_error {
+    flex: 0 0 100% !important;
+    margin-left: 204px !important; /* Label 180px + Gap 24px */
+    width: auto !important;
 }
 
 body.edit_entry #main.standard label:not(.group label) {
@@ -599,10 +654,10 @@ body.edit_entry .select2-container--default.select2-container--focus .select2-se
 body.edit_entry #main .group {
     display: flex;
     flex-wrap: wrap !important;
-    gap: 20px !important;
+    gap: 15px !important;
     flex: 1 !important;
     background: rgba(255, 255, 255, 0.02) !important;
-    padding: 20px !important;
+    padding: 15px !important;
     border-radius: 12px !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
     align-items: center !important;
@@ -613,7 +668,16 @@ body.edit_entry #main .group div {
     flex-direction: row !important;
     align-items: center !important;
     width: auto !important;
-    margin-bottom: 0 !important;
+    margin-right: 10px !important;
+}
+
+body.edit_entry #main .group label {
+    flex: none !important;
+    margin-left: 8px !important;
+    margin-right: 12px !important;
+    text-align: left !important;
+    color: #cbd5e1 !important;
+    font-weight: 500 !important;
 }
 
 /* Submit Buttons */
@@ -666,5 +730,390 @@ body.edit_entry #main input[type="submit"]:hover {
         margin-bottom: 8px !important;
         margin-right: 0 !important;
         margin-top: 0 !important;
+    }
+
+    /* Reset margin-left for hints/errors on mobile */
+    .seat_count_field .field_hint,
+    .seat_count_field .field_error {
+        margin-left: 0 !important;
+    }
+}
+
+/* Custom Fields Animation */
+.meeting_link_field {
+    display: none !important;
+}
+
+#meeting_link {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Ensure the meeting link row behaves correctly with flex when shown */
+body.edit_entry div:has(#meeting_link) {
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Meeting Link Button on View Entry page */
+.meeting_link_button {
+    display: inline-block !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+    padding: 8px 20px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    margin: 8px 0 !important;
+}
+
+.meeting_link_button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Hybrid Badge in Calendar */
+.hybrid_badge {
+    display: inline-block !important;
+    background: #3b82f6 !important; /* Blue */
+    color: #ffffff !important;
+    font-size: 0.65rem !important;
+    font-weight: 800 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    margin-left: 5px !important;
+    text-transform: uppercase !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    position: relative !important;
+    top: -1px !important;
+}
+
+.hybrid_badge.mini {
+    font-size: 0.55rem !important;
+    padding: 1px 4px !important;
+    margin-left: 3px !important;
+    font-weight: 700 !important;
+}
+
+/* =============================================================================
+   View Entry Page Modernization
+   ========================================================================== */
+
+body.view_entry {
+    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
+}
+
+body.view_entry .contents {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 40px 20px !important;
+    min-height: calc(100vh - 150px) !important;
+}
+
+body.view_entry h3 {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: #38bdf8 !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+
+body.view_entry h4 {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+    max-width: 800px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding-bottom: 10px !important;
+}
+
+/* Entry Details Table as a Card */
+body.view_entry table#entry {
+    width: 100% !important;
+    max-width: 800px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 12px !important;
+    margin: 0 auto 40px auto !important;
+}
+
+body.view_entry table#entry tr {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 12px !important;
+    transition: background 0.3s ease !important;
+}
+
+body.view_entry table#entry tr:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.view_entry table#entry td {
+    padding: 16px 20px !important;
+    border: none !important;
+    color: #f8fafc !important;
+}
+
+body.view_entry table#entry td:first-child {
+    width: 200px !important;
+    font-weight: 700 !important;
+    color: #38bdf8 !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* View Entry Action Buttons */
+body.view_entry #view_entry_nav {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    justify-content: center !important;
+    max-width: 800px !important;
+    width: 100% !important;
+}
+
+body.view_entry #view_entry_nav div {
+    display: inline-block !important;
+}
+
+body.view_entry #view_entry_nav input[type="submit"] {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+body.view_entry #view_entry_nav input[type="submit"]:hover {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Edit/Delete specific colors */
+body.view_entry #view_entry_nav input[value*="Delete"],
+body.view_entry #view_entry_nav input[value*="Reject"] {
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+body.view_entry #view_entry_nav input[value*="Delete"]:hover,
+body.view_entry #view_entry_nav input[value*="Reject"]:hover {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: white !important;
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Approval Buttons Styles */
+body.view_entry #approve_buttons td:last-child {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+}
+
+body.view_entry #approve_buttons input[type="submit"] {
+    padding: 8px 16px !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+body.view_entry #approve_buttons input[value*="Approve"] {
+    background: #22c55e !important;
+    border: none !important;
+    color: white !important;
+}
+
+body.view_entry #approve_buttons input[value*="Reject"] {
+    background: #ef4444 !important;
+    border: none !important;
+    color: white !important;
+}
+
+body.view_entry #approve_buttons input[value*="More info"] {
+    background: #3b82f6 !important;
+    border: none !important;
+    color: white !important;
+}
+
+body.view_entry #approve_buttons input[type="submit"]:hover {
+    filter: brightness(1.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* Responsive adjustments for Header */
+@media (max-width: 900px) {
+    header.banner {
+        flex-direction: column !important;
+        padding: 0.75rem 1rem !important;
+        gap: 0.75rem !important;
+    }
+    
+    header.banner .container {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+    }
+    
+    header.banner .menu {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.4rem !important;
+    }
+    
+    /* Hide unnecessary items on mobile to save space */
+    header.banner .menu a[href*="help"],
+    header.banner .menu a[href*="report"] {
+        display: none !important;
+    }
+    
+    header.banner .company a {
+        font-size: 1rem !important;
+    }
+    
+    header.banner .logo img {
+        height: 32px !important;
+    }
+    
+    header.banner .search_form {
+        display: none !important; /* Hide search on mobile by default */
+    }
+    
+    header.banner .logon {
+        gap: 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    header.banner .logon b {
+        display: none !important; /* Hide "You are [user]" text */
+    }
+}
+
+/* Responsive adjustments for View Entry */
+@media (max-width: 768px) {
+    body.view_entry .contents {
+        padding: 20px 10px !important;
+    }
+
+    body.view_entry table#entry {
+        display: block !important;
+        padding: 15px !important;
+        border-radius: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 30px 0 !important;
+        border-spacing: 0 !important;
+        border-collapse: collapse !important;
+    }
+
+    body.view_entry table#entry tbody,
+    body.view_entry table#entry tr {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 12px !important;
+    }
+
+    body.view_entry table#entry td {
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 8px 12px !important;
+        box-sizing: border-box !important;
+        overflow-wrap: break-word !important;
+        border: none !important;
+        text-align: center !important;
+    }
+    
+    body.view_entry table#entry td:first-child {
+        padding-bottom: 0 !important;
+        font-size: 0.75rem !important;
+        opacity: 0.8 !important;
+        color: #38bdf8 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        text-align: center !important;
+    }
+    #digital-clock {
+   display: none;
+}
+    
+    body.view_entry table#entry td:last-child {
+        padding-top: 2px !important;
+        font-size: 1rem !important;
+        color: #f8fafc !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        padding-bottom: 12px !important;
+        text-align: center !important;
+    }
+
+    body.view_entry #approve_buttons td:last-child {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 15px !important;
+    }
+
+    body.view_entry #approve_buttons input[type="submit"] {
+        width: 100% !important;
+    }
+    
+    body.view_entry #view_entry_nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    body.view_entry #view_entry_nav div,
+    body.view_entry #view_entry_nav input[type="submit"] {
+        width: 100% !important;
+    }
+
+    /* Registration and Registrant Tables */
+    body.view_entry #registration table,
+    body.view_entry #registrant_list table {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    body.view_entry #registration tr,
+    body.view_entry #registrant_list tr,
+    body.view_entry #registrant_list thead,
+    body.view_entry #registrant_list tbody {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    body.view_entry #registration td,
+    body.view_entry #registrant_list td,
+    body.view_entry #registrant_list th {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 10px !important;
+    }
+    
+    body.view_entry #registrant_list thead {
+        display: none !important; /* Hide headers on mobile for simplicity */
     }
 }
