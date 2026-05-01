@@ -4,7 +4,7 @@
  * - Confirmation field is hidden for non-admins to enforce approval workflow.
  */
  body{
-    background-color: #5f6470 !important;
+    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
  }
 
 /* Awaiting Approval INTERNAL Bookings (Type I): Premium Red Style */
@@ -231,4 +231,431 @@ header.banner input:focus {
     background: rgba(15, 23, 42, 0.9) !important;
     border-color: #38bdf8 !important;
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
+}
+/* =============================================================================
+   Login Page Modernization
+   ========================================================================== */
+
+/* Ensure the body and contents container allow for centering */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contents:has(#logon) {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+}
+
+body:has(#logon) {
+    background: linear-gradient(135deg, #50dfe4 0%, #1d3152 100%) !important;
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Force the login form to center and behave as a card */
+#logon.standard {
+    float: none !important;
+    margin: 40px auto !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+
+
+/* Reset fieldsets and legends */
+#logon fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+#logon fieldset legend {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
+    width: 100% !important;
+    border: none !important;
+    padding: 0 !important;
+    display: block !important;
+    float: none !important;
+}
+
+/* Ensure form rows stack correctly */
+#logon .field_div, 
+#logon fieldset > div,
+#logon div {
+    margin-bottom: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    float: none !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+#logon label {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+    text-align: left !important;
+    float: none !important;
+    display: block !important;
+}
+
+#logon input[type="text"],
+#logon input[type="password"] {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    color: #1e293b !important;
+    background: #ffffff !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    float: none !important;
+}
+
+#logon input[type="password"] {
+    padding-right: 48px !important;
+}
+
+#logon input[type="text"]:focus,
+#logon input[type="password"]:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Password Toggle Icon Fix */
+#logon .eye {
+    position: absolute !important;
+    right: 12px !important;
+    top: 36px !important; /* Adjusted for label height + margin */
+    cursor: pointer !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 48px !important; /* Roughly the height of the input */
+    width: 32px !important;
+}
+
+#logon .eye svg {
+    width: 20px !important;
+    height: 20px !important;
+    fill: #64748b !important;
+    transition: fill 0.2s ease !important;
+}
+
+#logon .eye:hover svg {
+    fill: #3b82f6 !important;
+}
+
+#logon .eye.off svg {
+    display: none; /* JS toggles display via inline style usually, but we ensure it works */
+}
+
+/* Submit Button Area */
+#logon input[type="submit"] {
+    width: 100% !important;
+    padding: 14px !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4) !important;
+    float: none !important;
+    margin-top: 10px !important;
+}
+
+#logon input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Error Messages */
+#logon p {
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    border: 1px solid #fecaca !important;
+    float: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Lost Password Link */
+#logon a[href*="reset_password"] {
+    color: #64748b !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    transition: color 0.2s ease !important;
+    display: inline-block !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+#logon a[href*="reset_password"]:hover {
+    color: #3b82f6 !important;
+    text-decoration: underline !important;
+}
+
+/* =============================================================================
+   Add/Edit Entry Page Modernization
+   ========================================================================== */
+
+body.edit_entry {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.edit_entry .contents {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 40px 20px !important;
+}
+
+/* Main Form Card */
+body.edit_entry #main.standard {
+    float: none !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    color: #f8fafc !important;
+}
+
+/* Fieldsets and Legends */
+body.edit_entry #main fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 40px 0 !important;
+}
+
+body.edit_entry #main fieldset legend {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #38bdf8 !important;
+    margin-bottom: 25px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+    width: 100% !important;
+    display: block !important;
+    float: none !important;
+}
+
+/* Form Rows - targeting the direct container of label + input */
+body.edit_entry #main.standard div.field_div,
+body.edit_entry #main.standard fieldset > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 24px !important;
+    float: none !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+body.edit_entry #main.standard label:not(.group label) {
+    flex: 0 0 180px !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    margin-right: 24px !important;
+    text-align: right !important;
+    margin-top: 12px !important;
+    float: none !important;
+}
+
+/* Ensure the input area fills the remaining space */
+body.edit_entry #main.standard .field_div > input,
+body.edit_entry #main.standard .field_div > select,
+body.edit_entry #main.standard .field_div > textarea,
+body.edit_entry #main.standard .field_div > span.select2,
+body.edit_entry #main.standard fieldset > div > input,
+body.edit_entry #main.standard fieldset > div > select,
+body.edit_entry #main.standard fieldset > div > textarea,
+body.edit_entry #main.standard fieldset > div > span.select2 {
+    flex: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important; /* Allow shrinking if needed */
+}
+
+/* Select2 Specific Styling */
+body.edit_entry .select2-container--default .select2-selection--single,
+body.edit_entry .select2-container--default .select2-selection--multiple {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #f8fafc !important;
+}
+
+body.edit_entry .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #f8fafc !important;
+    padding-left: 16px !important;
+}
+
+body.edit_entry .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 46px !important;
+}
+
+/* Inputs and Textareas */
+body.edit_entry #main input[type="text"],
+body.edit_entry #main input[type="number"],
+body.edit_entry #main textarea {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    min-height: 48px !important;
+}
+
+/* Multi-part fields (Start/End) - special alignment */
+body.edit_entry #main.standard .field_div > input.navigation,
+body.edit_entry #main.standard .field_div > select:not(#create_by) {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 120px !important;
+}
+
+/* Textarea height */
+body.edit_entry #main textarea {
+    min-height: 120px !important;
+}
+
+body.edit_entry #main input:focus,
+body.edit_entry #main textarea:focus,
+body.edit_entry .select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: #38bdf8 !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Checkboxes and Radio groups */
+body.edit_entry #main .group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    flex: 1 !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    align-items: center !important;
+}
+
+body.edit_entry #main .group div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: auto !important;
+    margin-bottom: 0 !important;
+}
+
+/* Submit Buttons */
+body.edit_entry #main fieldset:last-of-type {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+    padding-top: 30px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.edit_entry #main input[type="submit"] {
+    padding: 14px 35px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+body.edit_entry #main input[name="save_button"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3) !important;
+}
+
+body.edit_entry #main input[name="back_button"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+}
+
+body.edit_entry #main input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.edit_entry #main.standard div.field_div,
+    body.edit_entry #main.standard fieldset > div {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    body.edit_entry #main.standard label:not(.group label) {
+        flex: none !important;
+        text-align: left !important;
+        margin-bottom: 8px !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+    }
 }
