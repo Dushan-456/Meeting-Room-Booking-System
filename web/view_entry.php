@@ -969,7 +969,7 @@ if (!empty($error))
 }
 
 // If it's a registration event, then we only show the most important details, unless it's writable.
-$major_details_only = $row['allow_registration'] && !getWritable($row['create_by'], $row['room_id'], false);
+$major_details_only = !empty($row['allow_registration']) && !getWritable($row['create_by'], $row['room_id'], false);
 echo create_details_body($row, true, $keep_private, $room_disabled, $major_details_only);
 
 // If bookings require approval, and the room is enabled, put the buttons
