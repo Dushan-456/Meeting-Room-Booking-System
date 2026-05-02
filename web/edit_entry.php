@@ -466,23 +466,50 @@ function get_field_rooms($value, bool $disabled=false) : FieldSelect
                                      'multiple' => $multiroom_allowed, // If multiple is not set then required is unnecessary
                                      'required' => $multiroom_allowed, // and also causes an HTML5 validation error
                                      'disabled' => $disabled,
-                                     'size'     => '5'))
-        ->addSelectOptions($rooms[$area_id], $value, true);
+                                     'size'     => '5'));
+
+  $control = $field->getControl();
+  foreach ($rooms[$area_id] as $id => $room)
+  {
+    $option = new \MRBS\Form\ElementOption();
+    $option->setAttribute('value', $id)
+           ->setAttribute('data-capacity', $room['capacity'])
+           ->setText($room['name']);
+    if (in_array($id, (array)$value))
+    {
+      $option->setAttribute('selected');
+    }
+    $control->addElement($option);
+  }
 
   // Then generate templates for all the rooms
   foreach ($rooms as $a => $area_rooms)
   {
     $room_ids = array_keys($area_rooms);
 
-    $select = new ElementSelect();
+    $select = new \MRBS\Form\ElementSelect();
     $select->setAttributes(array('id'       => 'rooms' . $a,
                                  'name'     => 'rooms[]',
                                  'multiple' => $multiroom_allowed, // If multiple is not set then required is unnecessary
                                  'required' => $multiroom_allowed, // and also causes an HTML5 validation error
                                  'disabled' => true,
                                  'size'     => '5'))
-           ->addClass('none')
-           ->addSelectOptions($area_rooms, $room_ids[0], true);
+           ->addClass('none');
+
+    foreach ($area_rooms as $id => $room)
+    {
+      $option = new \MRBS\Form\ElementOption();
+      $option->setAttribute('value', $id)
+             ->setAttribute('data-capacity', $room['capacity'])
+             ->setText($room['name']);
+      // For templates we just select the first room
+      if ($id == $room_ids[0])
+      {
+        $option->setAttribute('selected');
+      }
+      $select->addElement($option);
+    }
+
     // Put in some data about the area for use by the JavaScript
     $select->setAttributes(array(
         'data-enable_periods'           => ($areas[$a]['enable_periods']) ? 1 : 0,
@@ -1619,7 +1646,7 @@ print_header($context);
 
 // Get the details of all the enabled rooms
 $rooms = array();
-$sql = "SELECT R.id, R.room_name, R.area_id
+$sql = "SELECT R.id, R.room_name, R.area_id, R.capacity
           FROM " . _tbl('room') . " R, " . _tbl('area') . " A
          WHERE R.area_id = A.id
            AND R.disabled=0
@@ -1633,7 +1660,10 @@ while (false !== ($row = $res->next_row_keyed()))
   // Only use rooms which are visible and for which the user has write access
   if (getWritable($create_by, $row['id']) && is_visible($row['id']))
   {
-    $rooms[$row['area_id']][$row['id']] = $row['room_name'];
+    $rooms[$row['area_id']][$row['id']] = array(
+      'name'     => $row['room_name'],
+      'capacity' => $row['capacity']
+    );
   }
 }
 
