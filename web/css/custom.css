@@ -2035,13 +2035,13 @@ If the booking involves a Zoom or Google Meet session, make sure to include the 
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 12px !important;
+    padding: 5px;
     overflow: hidden !important;
     white-space: nowrap !important;
     position: relative !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
     display: flex !important;
     align-items: center !important;
-    height: 50px !important;
 }
 
 .message_top span {
