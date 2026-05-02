@@ -363,9 +363,26 @@ function get_calendar_nav(string $view, int $view_all, int $year, int $month, in
 function get_date_heading(string $view, int $year, int $month, int $day) : string
 {
   global $datetime_formats, $display_timezone, $timezone,
-         $weekstarts, $year_start, $view_week_number;
+         $weekstarts, $year_start, $view_week_number,
+         $custom_date_buttons;
 
   $html = '';
+
+  // Add custom buttons before the date heading
+  if (isset($custom_date_buttons) && is_array($custom_date_buttons))
+  {
+    $html .= '<div class="custom_date_buttons">';
+    foreach ($custom_date_buttons as $button)
+    {
+      if (isset($button['text']) && isset($button['url']))
+      {
+        $html .= '<a href="' . escape_html($button['url']) . '" target="_blank" class="custom_btn">' . 
+                 escape_html($button['text']) . '</a>';
+      }
+    }
+    $html .= '</div>';
+  }
+
   $time = mktime(12, 0, 0, $month, $day, $year);
 
   $html .= '<h2 class="date">';
