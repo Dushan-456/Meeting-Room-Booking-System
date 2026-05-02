@@ -49,6 +49,7 @@ function print_head(bool $simple=false) : void
   }
 
   echo "<title>" . get_vocab("mrbs") . "</title>\n";
+  echo "  <link rel=\"shortcut icon\" href=\"images/falvicon.jpg\" type=\"image/x-icon\">\n";
 
   require_once MRBS_ROOT . "/style.inc";
 
