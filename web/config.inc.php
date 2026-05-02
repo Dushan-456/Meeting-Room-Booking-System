@@ -92,7 +92,7 @@ $db_persist = false;
 
 
 $mrbs_company = "PGIM Academic Centre";
-$vocab_override['en']['mrbs'] = "PGIM Academic Centre Booking System";
+$vocab_override['en']['mrbs'] = "Welcome";
 
 $mrbs_company_logo = "./images/logo.png";    // name of your logo file.   This example assumes it is in the MRBS directory
 
@@ -155,3 +155,9 @@ $radio_options['entry.hybrid_facility'] = array(1 => 'Yes', 0 => 'No');
 $custom_js_url = 'js/custom.js';
 
 
+// Custom buttons in date heading
+$custom_date_buttons = array(
+    array('text' => 'PGIM Main Premises ', 'url' => 'https://example.com/2'),
+    array('text' => 'Academic Centre', 'url' => 'https://example.com/1'),
+    array('text' => 'Board Room V', 'url' => 'https://example.com/3')
+);
