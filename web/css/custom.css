@@ -34,10 +34,10 @@
 .awaiting_approval.E,
 .awaiting_approval.E a,
 .awaiting_approval.E .booking {
-    background: #ff5e00 !important;
-    background-color: #ff5e00 !important;
+    background: #f38343 !important;
+    background-color: #f38343 !important;
     background-image: none !important;
-    border: 1px solid #ff5e00 !important;
+    border: 1px solid #f38343 !important;
     opacity: 1 !important;
     color: #ffffff !important;
 }
@@ -1844,3 +1844,491 @@ body.import input[type="submit"]:hover {
         padding: 20px !important;
     }
 }
+
+/* =============================================================================
+   Edit Message Page Modernization
+   ========================================================================== */
+
+body.edit_message {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.edit_message .contents {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 40px 20px !important;
+}
+
+/* Main Form Card */
+body.edit_message #message.standard {
+    float: none !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 800px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    color: #f8fafc !important;
+}
+
+/* Fieldsets and Legends */
+body.edit_message #message fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 30px 0 !important;
+}
+
+body.edit_message #message fieldset legend {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #38bdf8 !important;
+    margin-bottom: 25px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+    width: 100% !important;
+    display: block !important;
+    float: none !important;
+}
+
+/* Form Rows */
+body.edit_message #message.standard div.field_div,
+body.edit_message #message.standard fieldset > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 24px !important;
+    float: none !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+body.edit_message #message.standard label {
+    flex: 0 0 180px !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    margin-right: 24px !important;
+    text-align: right !important;
+    margin-top: 12px !important;
+    float: none !important;
+}
+
+/* Inputs and Textareas */
+body.edit_message #message input[type="text"],
+body.edit_message #message input[type="date"],
+body.edit_message #message textarea {
+    flex: 1 !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    min-height: 48px !important;
+}
+
+body.edit_message #message textarea {
+    min-height: 150px !important;
+}
+
+body.edit_message #message input:focus,
+body.edit_message #message textarea:focus {
+    border-color: #38bdf8 !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Buttons Area */
+body.edit_message #message .submit_buttons {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+    padding-top: 30px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+}
+
+body.edit_message #message input[type="submit"] {
+    padding: 14px 35px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+body.edit_message #message input[name="save_button"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3) !important;
+}
+
+body.edit_message #message input[name="back_button"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+}
+
+body.edit_message #message input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.edit_message #message.standard div.field_div,
+    body.edit_message #message.standard fieldset > div {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    body.edit_message #message.standard label {
+        flex: none !important;
+        text-align: left !important;
+        margin-bottom: 8px !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* =============================================================================
+   News Ticker / Top Message Styling
+   ========================================================================== */
+/* Remove any unnecessary bookings.   |   
+When creating a new booking, ensure that all requirements are selected correctly and that the participant count is accurate.    |    
+If the booking involves a Zoom or Google Meet session, make sure to include the meeting link in the booking details. */
+.message_top {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #f83e38 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    position: relative !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 50px !important;
+}
+
+.message_top span {
+    display: inline-block !important;
+    padding-left: 100% !important; /* Start off-screen to the right */
+    animation: marquee 25s linear infinite !important;
+    will-change: transform !important;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* Pause on hover for readability */
+.message_top:hover span {
+    animation-play-state: paused !important;
+}
+
+/* =============================================================================
+   Pending Bookings Page Modernization (pending.php)
+   ========================================================================== */
+
+body.pending {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    min-height: 100vh;
+}
+
+body.pending .contents {
+    color: #f1f5f9 !important;
+    max-width:90% !important;
+    margin: 40px auto !important;
+    padding: 40px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.pending h1 {
+    color: #ffffff !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 30px !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.2) !important;
+    padding-bottom: 15px !important;
+}
+
+/* Tables in Pending page */
+body.pending table.admin_table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+    background: transparent !important;
+    margin: 20px 0 !important;
+    color: #ffffff !important;
+}
+
+body.pending table.admin_table th {
+    background: rgba(56, 189, 248, 0.2) !important;
+    color: #38bdf8 !important;
+    padding: 16px !important;
+    text-align: left !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.05em !important;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.4) !important;
+}
+
+body.pending table.admin_table tr td {
+    background: rgba(15, 23, 42, 0.4) !important;
+    color: #f8fafc !important;
+}
+
+body.pending table.admin_table tr:hover td {
+    background: rgba(15, 23, 42, 0.6) !important;
+    color: #ffffff !important;
+}
+
+body.pending table.admin_table td * {
+    color: inherit !important;
+}
+
+body.pending table.admin_table td a {
+    color: #38bdf8 !important;
+}
+
+/* Sub-tables for series */
+body.pending tr.sub_table td {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+body.pending .details {
+    padding: 20px !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 16px !important;
+    margin: 10px 20px 20px 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.pending .details table,
+body.pending .details td,
+body.pending .details th {
+    color: #ffffff !important;
+}
+
+body.pending table.sub {
+    margin: 0 !important;
+}
+
+/* Links */
+body.pending table.admin_table a {
+    color: #38bdf8 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+body.pending table.admin_table a:hover {
+    color: #7dd3fc !important;
+    text-decoration: underline !important;
+}
+
+/* Action Buttons */
+body.pending form {
+    display: inline-block !important;
+    margin-right: 8px !important;
+}
+
+body.pending input[type="submit"] {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+/* Specific colors for actions */
+body.pending input[value="Approve"],
+body.pending input[value="Confirm"] {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3) !important;
+}
+
+body.pending input[value="Reject"] {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3) !important;
+}
+
+body.pending input[value="More info"],
+body.pending input[value="Remind Admin"] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+body.pending input[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Empty state */
+body.pending .contents > p:first-of-type {
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    color: #94a3b8 !important;
+    padding: 60px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 16px !important;
+    border: 1px dashed rgba(255, 255, 255, 0.1) !important;
+}
+
+/* =============================================================================
+   Main Calendar Modernization (index.php)
+   ========================================================================== */
+
+/* Calendar Table Container - Glassmorphism Card */
+.table_container {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    overflow: auto !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Main Table Styling - STICK TO USER CONSTRAINTS (NO SIZE/PADDING CHANGES) */
+table.dwm_main {
+    border-collapse: collapse !important;
+    min-width: 100% !important;
+    width: auto !important;
+    background: transparent !important;
+    color: #f1f5f9 !important;
+}
+
+/* Row Headers and Time Columns */
+table.dwm_main th {
+    background: #0f172a !important; /* Sleek Slate 900 */
+    color: #38bdf8 !important; /* Sky Blue accent */
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+table.dwm_main th a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+
+
+/* Empty Cell Hover */
+table.dwm_main td:not(.booked):hover {
+    background: rgba(85, 87, 204, 0.849) !important;
+}
+
+/* --- Booking Category Colors (Premium Glass Look) --- */
+
+/* Standard Internal (Type I) - Deep Blue */
+table.dwm_main td.I:not(.awaiting_approval),
+table.dwm_main td.I:not(.awaiting_approval) a {
+    background: rgba(37, 99, 235, 0.7) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Standard External (Type E) - Rich Teal/Cyan */
+table.dwm_main td.E:not(.awaiting_approval),
+table.dwm_main td.E:not(.awaiting_approval) a {
+    background: rgba(13, 148, 136, 0.7) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hover on booked cells */
+table.dwm_main td.booked:hover {
+    filter: brightness(1.15) saturate(1.1) !important;
+    z-index: 10 !important;
+}
+
+/* Ensure links inside booked cells are readable */
+table.dwm_main td.booked a {
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+}
+
+
+/* Color Key / Legend Styling */
+
+
+.color_key div {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #041933 !important;
+}
+
+.color_key div::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 4px !important;
+}
+
+.color_key .I::before { background: #2563eb !important; }
+.color_key .E::before { background: #0d9488 !important; }
+
+
+/* =============================================================================
+   Compact Layout Optimization (save vertical space)
+   ========================================================================== */
+
+/* Reduce Header height */
+header.banner {
+    padding: 0.4rem 1.5rem !important;
+}
+
+
+
+
+/* Tighten Date Heading */
+.date_heading {
+    font-size: 1.25rem !important;
+    margin-bottom: 8px !important;
+    margin-top: 5px !important;
+}
+
+.date_heading h2 {
+    font-size: inherit !important;
+    margin: 5px !important;
+    display: inline-block !important;
+}
+
+
