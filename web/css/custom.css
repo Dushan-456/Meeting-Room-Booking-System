@@ -518,13 +518,14 @@ body.edit_entry #main fieldset {
 }
 
 #digital-clock {
+    flex: 1 !important;
+    text-align: right !important;
     color: #38bdf8;
     font-family: 'Courier New', Courier, monospace; /* Digital look */
     font-weight: 700;
-    width: auto !important;
-    width: 300px !important;
     font-size: 1.6rem;
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    display: block !important;
 }
 body.edit_entry #main fieldset legend {
     font-size: 1.5rem !important;
@@ -2320,15 +2321,60 @@ header.banner {
 
 /* Tighten Date Heading */
 .date_heading {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
     font-size: 1.25rem !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 15px !important;
     margin-top: 5px !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
 }
 
 .date_heading h2 {
+    flex: 2 !important;
+    text-align: center !important;
     font-size: inherit !important;
-    margin: 5px !important;
-    display: inline-block !important;
+    margin: 0 !important;
+    display: block !important;
 }
 
 
+/* Custom Date Heading Buttons */
+.custom_date_buttons {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 5px !important;
+    vertical-align: middle !important;
+}
+
+.custom_date_buttons .custom_btn {
+    background: rgba(56, 189, 248, 0.15) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    padding: 5px 8px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.custom_date_buttons .custom_btn:hover {
+    background: #38bdf8 !important;
+    color: #0f172a !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4) !important;
+    border-color: #38bdf8 !important;
+}
+
+.custom_date_buttons .custom_btn:active {
+    transform: translateY(0) !important;
+}
