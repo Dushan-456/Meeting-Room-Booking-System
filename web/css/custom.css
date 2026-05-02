@@ -12,10 +12,27 @@
  }
 
  .contents {
-    float: none !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
+ }
+
+ @media (min-width: 769px) {
+    .contents {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 20px !important;
+    }
+    
+ 
+    
+    .view_container {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
  }
 
 /* Awaiting Approval INTERNAL Bookings (Type I): Premium Red Style */
@@ -2377,4 +2394,160 @@ header.banner {
 
 .custom_date_buttons .custom_btn:active {
     transform: translateY(0) !important;
+}
+
+/* =============================================================================
+   Mobile Responsiveness (Header, Date Heading, Login)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Header Responsiveness */
+    header.banner {
+        padding: 0.4rem 0.5rem !important;
+        flex-direction: column !important;
+        gap: 0.4rem !important;
+        text-align: center !important;
+    }
+
+    header.banner .logo img {
+        height: 36px !important;
+    }
+
+    header.banner .company {
+        flex-direction: column !important;
+        gap: 0.1rem !important;
+    }
+
+    header.banner .company a {
+        font-size: 1rem !important;
+    }
+
+    header.banner .container {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+
+    header.banner .menu {
+        gap: 0.4rem !important;
+        justify-content: center !important;
+    }
+
+    header.banner .menu a {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Hide Rooms and Users navigations in mobile view */
+    header.banner .menu a[href*="admin.php"],
+    header.banner .menu a[href*="edit_users.php"] {
+        display: none !important;
+    }
+
+    header.banner .logon {
+        gap: 0.6rem !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    header.banner .logon form#show_my_entries input[type="submit"] {
+        font-size: 0.75rem !important;
+    }
+
+    header.banner form {
+        margin: 0 !important;
+    }
+
+    header.banner #header_search input,
+    header.banner #form_nav input {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Date Heading Responsiveness */
+    .date_heading {
+        flex-direction: column !important;
+        gap: 6px !important;
+        padding: 5px 10px !important;
+        text-align: center !important;
+        margin-bottom: 10px !important;
+        margin-top: 5px !important;
+    }
+
+    .date_heading h2 {
+        order: 1 !important;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+
+    .custom_date_buttons {
+        order: 2 !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        gap: 6px !important;
+    }
+
+    .custom_date_buttons .custom_btn {
+        padding: 4px 10px !important;
+        font-size: 0.75rem !important;
+    }
+
+    #digital-clock {
+        order: 3 !important;
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+
+    /* Calendar Navigation Tightening */
+    nav.main_calendar {
+        gap: 6px !important;
+        padding: 6px !important;
+        margin-bottom: 8px !important;
+    }
+
+    nav.arrow, nav.view, nav.location {
+        gap: 4px !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    nav.arrow a, nav.view a, nav.location select {
+        padding: 4px 8px !important;
+        font-size: 0.75rem !important;
+        height: auto !important;
+    }
+
+    /* Login Page Responsiveness */
+    .contents:has(#logon) {
+        padding: 10px !important;
+        min-height: calc(100vh - 60px) !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    #logon.standard {
+        padding: 30px 20px !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #logon fieldset legend {
+        font-size: 1.4rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    #logon .field_div, #logon fieldset > div, #logon div {
+        margin-bottom: 18px !important;
+    }
+    
+    #logon input[type="text"],
+    #logon input[type="password"] {
+        font-size: 16px !important; /* Prevent iOS zoom */
+    }
 }
