@@ -75,10 +75,7 @@ function print_header_site_info() : void
   if (!empty($mrbs_company_logo))
   {
     echo "<div class=\"logo\">\n";
-    if (!empty($mrbs_company_url))
-    {
-      echo '<a href="' . escape_html($mrbs_company_url) . '">';
-    }
+    echo '<a href="' . escape_html(multisite('index.php')) . '">';
     // Suppress error messages in case the logo is a URL, in which case getimagesize() can
     // fail for any number of reasons, eg (a) allow_url_fopen is not enabled in php.ini or
     // (b) "SSL operation failed with code 1. OpenSSL Error messages: error:1416F086:SSL
@@ -92,11 +89,7 @@ function print_header_site_info() : void
       echo ' ' . $logo_size[3];
     }
     echo '>';
-
-    if (!empty($mrbs_company_url))
-    {
-      echo "</a>\n";
-    }
+    echo "</a>\n";
     echo "</div>\n";
   }
 
@@ -217,8 +210,7 @@ function print_menu_items(string $query) : void
 {
   global $auth, $kiosk_mode_enabled;
 
-  $menu_items = array('help'   => 'help.php',
-                      'report' => 'report.php',
+  $menu_items = array('report' => 'report.php',
                       'import' => 'import.php');
 
   if ($kiosk_mode_enabled)
