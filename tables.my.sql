@@ -133,6 +133,7 @@ CREATE TABLE mrbs_repeat
   tv             tinyint DEFAULT 0 NOT NULL,
   hybrid_facility tinyint DEFAULT 0 NOT NULL,
   meeting_link   text DEFAULT NULL,
+  other_requirement text DEFAULT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
@@ -179,6 +180,7 @@ CREATE TABLE mrbs_entry
   tv                          tinyint DEFAULT 0 NOT NULL,
   hybrid_facility             tinyint DEFAULT 0 NOT NULL,
   meeting_link                text DEFAULT NULL,
+  other_requirement           text DEFAULT NULL,
 
   PRIMARY KEY (id),
   FOREIGN KEY (room_id)
