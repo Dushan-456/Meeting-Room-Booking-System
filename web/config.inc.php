@@ -118,15 +118,20 @@ $is_mandatory_field['entry.tv'] = true;
 $is_mandatory_field['entry.hybrid_facility'] = true;
 
 // Vocab Overrides
-$vocab_override['en']['entry.seat_count'] = "How many participants attend this?";
-$vocab_override['en']['entry.event_type'] = "Event Type";
-$vocab_override['en']['entry.internet'] = "Internet Facility";
-$vocab_override['en']['entry.laptop'] = "Laptop or Computer";
-$vocab_override['en']['entry.sound_system'] = "Sound System with Mic";
-$vocab_override['en']['entry.projector'] = "Projector";
-$vocab_override['en']['entry.tv'] = "TV Facility";
+$vocab_override['en']['entry.seat_count'] = "Roughly how many participants will attend this?";
+$vocab_override['en']['entry.event_type'] = "Select Booking Type";
+$vocab_override['en']['entry.internet'] = "Do you need Internet Facility?";
+$vocab_override['en']['entry.laptop'] = "Do you need Laptop or Computer?";
+$vocab_override['en']['entry.sound_system'] = "Do you need Sound System with Microphones?";
+$vocab_override['en']['entry.projector'] = "Do you need Projector or Other Multimedia Devices?";
+$vocab_override['en']['entry.tv'] = "Do you need TV Facility?";
 $vocab_override['en']['entry.hybrid_facility'] = "Is this event required Zoom or hybrid meeting facility?";
+$vocab_override['en']['namebooker'] = "Topic of Event";
 $vocab_override['en']['entry.meeting_link'] = "Zoom or Google Meet Link";
+$vocab_override['en']['entry.other_requirement'] = "Other Requirement";
+
+// Field Order
+$edit_entry_field_order = array('create_by', 'name', 'description', 'start_time', 'end_time', 'room_id', 'type', 'confirmation_status', 'privacy_status', 'seat_count', 'event_type', 'internet', 'laptop', 'sound_system', 'projector', 'tv', 'hybrid_facility', 'meeting_link', 'other_requirement');
 
 // Select Options
 $select_options['entry.event_type'] = array(
@@ -147,3 +152,5 @@ $radio_options['entry.hybrid_facility'] = array(1 => 'Yes', 0 => 'No');
 
 // Custom JavaScript
 $custom_js_url = 'js/custom.js';
+
+
