@@ -91,7 +91,8 @@ $db_persist = false;
    or areadefaults.inc.php.  */
 
 
-$mrbs_company = "PGIM Booking";
+$mrbs_company = "PGIM Academic Centre";
+$vocab_override['en']['mrbs'] = "PGIM Academic Centre Booking System";
 
 $mrbs_company_logo = "./images/logo.png";    // name of your logo file.   This example assumes it is in the MRBS directory
 
