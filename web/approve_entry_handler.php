@@ -38,19 +38,22 @@ $booking_date = getdate($data['start_time']);
 $b_year  = $booking_date['year'];
 $b_month = $booking_date['mon'];
 $b_day   = $booking_date['mday'];
+$b_area  = $data['area_id'];
+$b_room  = $data['room_id'];
 
 // Force the return URL to the day view for the specific day of the booking
+// and the correct area and room.
 if (mb_strpos($returl, '?') === false)
 {
-  $returl .= "?view=day&year=$b_year&month=$b_month&day=$b_day&area=$area&room=$room";
+  $returl .= "?view=day&year=$b_year&month=$b_month&day=$b_day&area=$b_area&room=$b_room";
 }
 else
 {
-  // If there's already a query string, ensure we use the day view and the booking's date
-  // Strip existing view, year, month, day parameters
-  $returl = preg_replace('/([?&])(view|year|month|day)=[^&]+(&?)/', '$1', $returl);
+  // If there's already a query string, ensure we use the day view and the booking's date/area/room
+  // Strip existing view, year, month, day, area, room parameters
+  $returl = preg_replace('/([?&])(view|year|month|day|area|room)=[^&]+(&?)/', '$1', $returl);
   $returl = rtrim($returl, '?&');
-  $returl .= (mb_strpos($returl, '?') === false ? '?' : '&') . "view=day&year=$b_year&month=$b_month&day=$b_day";
+  $returl .= (mb_strpos($returl, '?') === false ? '?' : '&') . "view=day&year=$b_year&month=$b_month&day=$b_day&area=$b_area&room=$b_room";
 }
 
 
