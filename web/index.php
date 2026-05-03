@@ -505,8 +505,9 @@ $date_heading = get_date_heading($view, $year, $month, $day);
 
 if ($refresh)
 {
+  $date_heading_with_clock = $date_heading . '<span id="digital-clock"></span>';
   echo json_encode(array(
-    'date_heading' => $date_heading,
+    'date_heading' => $date_heading_with_clock,
     'inner_html' => $inner_html
   ));
   exit;
