@@ -5,10 +5,15 @@
  */
  html, body {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
-    overflow-x: hidden !important;
+    overflow: auto !important; /* Allow both horizontal and vertical scrolling */
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+ }
+
+ body.index {
+    overflow-y: auto !important;
+    max-height: none !important;
  }
 
  .contents {
@@ -17,6 +22,7 @@
     width: 100% !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
+    overflow-y: visible !important; /* Allow vertical content to flow */
  }
 
  @media (min-width: 769px) {
@@ -32,6 +38,7 @@
     .view_container {
         flex: 1 !important;
         min-width: 0 !important;
+        overflow-y: auto !important; /* Enable scrolling for the calendar view */
     }
  }
 
@@ -512,7 +519,7 @@ body.edit_entry #main.standard {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 24px !important;
-    padding: 40px !important;
+    padding: 15px !important;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
     color: #f8fafc !important;
 }
@@ -562,7 +569,7 @@ body.edit_entry #main.standard fieldset > div {
     display: flex; /* No !important to allow JS toggling */
     flex-direction: row !important;
     align-items: flex-start !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 5px !important;
     float: none !important;
     width: 100% !important;
     clear: both !important;
@@ -830,7 +837,7 @@ body.view_entry .contents {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 40px 20px !important;
+    padding: 1px 0px !important;
     min-height: calc(100vh - 150px) !important;
 }
 
@@ -838,7 +845,7 @@ body.view_entry h3 {
     font-size: 2rem !important;
     font-weight: 800 !important;
     color: #38bdf8 !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 0px !important;
     text-align: center !important;
     text-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
 }
@@ -847,7 +854,7 @@ body.view_entry h4 {
     font-size: 1.25rem !important;
     font-weight: 600 !important;
     color: #94a3b8 !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 0px !important;
     width: 100% !important;
     max-width: 800px !important;
     border-bottom: 1px solid rgba(255,255,255,0.1) !important;
@@ -863,10 +870,10 @@ body.view_entry table#entry {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 24px !important;
-    padding: 30px !important;
+    padding: 20px !important;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
     border-collapse: separate !important;
-    border-spacing: 0 12px !important;
+    border-spacing: 0 6px !important;
     margin: 0 auto 40px auto !important;
 }
 
@@ -881,7 +888,7 @@ body.view_entry table#entry tr:hover {
 }
 
 body.view_entry table#entry td {
-    padding: 16px 20px !important;
+    padding: 5px 10px !important;
     border: none !important;
     color: #f8fafc !important;
 }
@@ -1724,7 +1731,7 @@ body.report .contents,
 body.import .contents,
 body.help .contents {
     color: #f1f5f9 !important;
-    max-width: 1100px !important;
+    max-width: 80% !important;
     margin: 30px auto !important;
     padding: 30px !important;
     background: rgba(255, 255, 255, 0.03) !important;
@@ -2368,11 +2375,11 @@ header.banner {
 }
 
 .custom_date_buttons .custom_btn {
-    background: rgba(56, 189, 248, 0.15) !important;
+    background: rgba(248, 193, 13, 0.1) !important; /* Gold 10% opacity */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: #38bdf8 !important;
-    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    color: #f8c10d !important; /* Logo Gold */
+    border: 1px solid rgba(248, 193, 13, 0.3) !important;
     padding: 5px 8px !important;
     border-radius: 12px !important;
     text-decoration: none !important;
@@ -2385,15 +2392,111 @@ header.banner {
 }
 
 .custom_date_buttons .custom_btn:hover {
-    background: #38bdf8 !important;
+    background: #f8c10d !important;
     color: #0f172a !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4) !important;
-    border-color: #38bdf8 !important;
+    box-shadow: 0 10px 15px -3px rgba(248, 193, 13, 0.4) !important;
+    border-color: #f8c10d !important;
 }
 
 .custom_date_buttons .custom_btn:active {
     transform: translateY(0) !important;
+}
+
+.custom_date_buttons .custom_btn.active {
+    background: linear-gradient(135deg, #f8c10d 0%, #f39c12 100%) !important; /* Gold to Orange gradient */
+    color: #000000 !important;
+    border-color: #f8c10d !important;
+    box-shadow: 0 4px 12px rgba(248, 193, 13, 0.5) !important;
+}
+
+/* Styling for Area and Room Select Dropdowns (including Select2 support) */
+.select_label {
+    color: #f8c10d !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    margin-right: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+/* Base Select Style (for when JS is disabled) and Select2 Container */
+select.room_area_select,
+nav.location .select2-container--default .select2-selection--single {
+    background: rgba(15, 23, 42, 0.7) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(248, 193, 13, 0.3) !important;
+    color: #f8c10d !important;
+    padding: 0 12px !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+}
+
+/* Fix text alignment and color in Select2 */
+nav.location .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #f8c10d !important;
+    line-height: 38px !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+}
+
+/* Fix arrow position and color in Select2 */
+nav.location .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 28px !important;
+    right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+nav.location .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #f8c10d transparent transparent transparent !important;
+    border-width: 6px 5px 0 5px !important;
+}
+
+/* Hover and Focus */
+select.room_area_select:hover,
+nav.location .select2-container--default:hover .select2-selection--single {
+    border-color: #f8c10d !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    box-shadow: 0 0 0 3px rgba(248, 193, 13, 0.2) !important;
+}
+
+/* Style the Dropdown Results (the popup list) */
+.select2-dropdown {
+    background: #0f172a !important;
+    border: 1px solid rgba(248, 193, 13, 0.5) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(12px) !important;
+    margin-top: 5px !important;
+}
+
+.select2-results__option {
+    color: #f1f5f9 !important;
+    padding: 10px 15px !important;
+    font-size: 0.9rem !important;
+}
+
+.select2-results__option--highlighted[aria-selected] {
+    background: #f8c10d !important;
+    color: #00c3ff !important;
+}
+
+.select2-results__option[aria-selected="true"] {
+    background: rgba(248, 193, 13, 0.1) !important;
 }
 
 /* =============================================================================
