@@ -81,6 +81,7 @@ function make_area_select_html(string $view, int $year, int $month, int $day, in
                                  'value' => get_vocab('change')));
     $form->addElement($submit);
 
+    $out_html .= '<span class="select_label">Select your area: </span>';
     $out_html .= $form->toHTML();
   }
 
@@ -376,7 +377,8 @@ function get_date_heading(string $view, int $year, int $month, int $day) : strin
     {
       if (isset($button['text']) && isset($button['url']))
       {
-        $html .= '<a href="' . escape_html($button['url']) . '" target="_blank" class="custom_btn">' . 
+        $active_class = (isset($button['active']) && $button['active']) ? ' active' : '';
+        $html .= '<a href="' . escape_html($button['url']) . '" target="_blank" class="custom_btn' . $active_class . '">' . 
                  escape_html($button['text']) . '</a>';
       }
     }
