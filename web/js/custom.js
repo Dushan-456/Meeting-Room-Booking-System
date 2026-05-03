@@ -31,10 +31,15 @@ $(document).on('ready page_ready tableload', function() {
         clearInterval(window.clockInterval);
     }
     
-    if ($('#digital-clock').length > 0) {
-        updateClock();
-        window.clockInterval = setInterval(updateClock, 1000);
+    function initClock() {
+        if ($('#digital-clock').length > 0) {
+            updateClock();
+            if (window.clockInterval) clearInterval(window.clockInterval);
+            window.clockInterval = setInterval(updateClock, 1000);
+        }
     }
+    
+    initClock();
 
     // --- 1. Hybrid Meeting Link & Zoom Times Toggle & Validation ---
     function checkHybridFieldsValidity() {
