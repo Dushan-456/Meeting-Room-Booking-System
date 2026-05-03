@@ -36,31 +36,137 @@ $(document).on('ready page_ready tableload', function() {
         window.clockInterval = setInterval(updateClock, 1000);
     }
 
-    // --- 1. Hybrid Meeting Link Toggle ---
+    // --- 1. Hybrid Meeting Link & Zoom Times Toggle & Validation ---
+    function checkHybridFieldsValidity() {
+        var hybridSelected = $('input[name="f_hybrid_facility"]:checked').val() === '1';
+        var fields = [
+            { name: 'f_meeting_link', label: 'Zoom or Google Meet Link', errorId: 'meeting_link_error' },
+            { name: 'f_zoom_start_time', label: 'Zoom Start Time', errorId: 'zoom_start_time_error' },
+            { name: 'f_zoom_end_time', label: 'Zoom End Time', errorId: 'zoom_end_time_error' }
+        ];
+
+        var allValid = true;
+
+        fields.forEach(function(f) {
+            var input = $('[name="' + f.name + '"]');
+            var errorDiv = $('#' + f.errorId);
+            if (input.length === 0) return;
+
+            if (hybridSelected && input.val().trim() === '') {
+                if (input[0].setCustomValidity) {
+                    input[0].setCustomValidity(f.label + ' is required.');
+                }
+                if (errorDiv.length) {
+                    errorDiv.text(f.label + ' is required when Zoom/Hybrid facility is selected.').css('display', 'block');
+                }
+                input.css({
+                    'border-color': '#ff5252',
+                    'box-shadow': '0 0 0 3px rgba(255, 82, 82, 0.2)'
+                });
+                allValid = false;
+            } else {
+                if (input[0].setCustomValidity) {
+                    input[0].setCustomValidity('');
+                }
+                if (errorDiv.length) errorDiv.hide();
+                input.css({
+                    'border-color': '',
+                    'box-shadow': ''
+                });
+            }
+        });
+
+        return allValid;
+    }
+
     function toggleMeetingLink() {
-        var selectedValue = $('input[name="f_hybrid_facility"]:checked').val();
-        var meetingLinkContainer = $('.meeting_link_field');
-        var meetingLinkInput = $('input[name="f_meeting_link"]');
+        var $hybridChecked = $('input[name="f_hybrid_facility"]:checked');
+        var selectedValue = $hybridChecked.val();
         
-        if (selectedValue === '1') {
-            meetingLinkContainer.attr('style', 'display: flex !important');
-            meetingLinkInput.prop('required', true);
-        } else {
-            meetingLinkContainer.attr('style', 'display: none !important');
-            meetingLinkInput.prop('required', false);
-            meetingLinkInput.val(''); 
-        }
+        var fields = [
+            { name: 'f_meeting_link', containerClass: 'meeting_link_field', errorId: 'meeting_link_error', label: 'Zoom Link' },
+            { name: 'f_zoom_start_time', containerClass: 'zoom_start_time_field', errorId: 'zoom_start_time_error', label: 'Zoom Start Time' },
+            { name: 'f_zoom_end_time', containerClass: 'zoom_end_time_field', errorId: 'zoom_end_time_error', label: 'Zoom End Time' }
+        ];
+
+        fields.forEach(function(f) {
+            var container = $('.' + f.containerClass);
+            var input = $('[name="' + f.name + '"]');
+            var errorDiv = $('#' + f.errorId);
+
+            // Create error div if it doesn't exist
+            if (errorDiv.length === 0 && container.length > 0) {
+                errorDiv = $('<div id="' + f.errorId + '" class="field_error" style="display: none; color: #ff5252; font-weight: bold; margin-top: 5px; font-size: 0.85rem; width: 100%;"></div>');
+                container.append(errorDiv);
+            }
+
+            if (selectedValue === '1') {
+                container.attr('style', 'display: flex !important; flex-wrap: wrap !important;');
+                input.prop('required', true).attr('required', 'required');
+            } else {
+                container.attr('style', 'display: none !important');
+                input.prop('required', false).removeAttr('required');
+                input.val(''); 
+                if (input[0] && input[0].setCustomValidity) {
+                    input[0].setCustomValidity('');
+                }
+                if (errorDiv.length) errorDiv.hide();
+            }
+        });
+
+        checkHybridFieldsValidity();
     }
 
     if ($('input[name="f_hybrid_facility"]').length > 0) {
         toggleMeetingLink();
-        $('input[name="f_hybrid_facility"]').off('change').on('change', function() {
+        $(document).on('change', 'input[name="f_hybrid_facility"]', function() {
             toggleMeetingLink();
+        });
+        $(document).on('input change', '[name="f_meeting_link"], [name="f_zoom_start_time"], [name="f_zoom_end_time"]', function() {
+            checkHybridFieldsValidity();
         });
     }
 
+    // High-priority interceptor for form submission using Capture Phase
+    document.addEventListener('submit', function(e) {
+        if (e.target && e.target.id === 'main') {
+            var isValid = checkHybridFieldsValidity();
+            if (!isValid) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                
+                var $form = $(e.target);
+                $form.find('input[type=submit]').prop('disabled', false);
+                $form.removeData('submit');
+                
+                // Focus the first empty required field
+                var firstError = $form.find('[name="f_meeting_link"], [name="f_zoom_start_time"], [name="f_zoom_end_time"]').filter(function() {
+                    return $(this).val().trim() === '';
+                }).first();
+                if (firstError.length) firstError.focus();
+                
+                return false;
+            }
+        }
+    }, true); // True means capture phase, which runs before MRBS's listeners
 
-    // --- 2. Seat Count Validation ---
+
+    // --- 2. Time Picker Enhancements ---
+    // Trigger native time picker when clicking anywhere in the input field
+    $(document).on('click', '[name="f_zoom_start_time"], [name="f_zoom_end_time"]', function() {
+        if (this.showPicker) {
+            try {
+                this.showPicker();
+            } catch (err) {
+                // Fallback for browsers that don't support showPicker() yet
+                $(this).focus();
+            }
+        } else {
+            $(this).focus();
+        }
+    });
+
+    // --- 3. Seat Count Validation ---
     function validateSeatCount() {
         var seatCountField = $('input[name="f_seat_count"]');
         if (seatCountField.length === 0) return;
