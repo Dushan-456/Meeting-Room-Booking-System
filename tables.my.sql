@@ -132,6 +132,8 @@ CREATE TABLE mrbs_repeat
   projector      tinyint DEFAULT 0 NOT NULL,
   tv             tinyint DEFAULT 0 NOT NULL,
   hybrid_facility tinyint DEFAULT 0 NOT NULL,
+  zoom_start_time TIME DEFAULT NULL,
+  zoom_end_time   TIME DEFAULT NULL,
   meeting_link   text DEFAULT NULL,
   other_requirement text DEFAULT NULL,
 
@@ -179,6 +181,8 @@ CREATE TABLE mrbs_entry
   projector                   tinyint DEFAULT 0 NOT NULL,
   tv                          tinyint DEFAULT 0 NOT NULL,
   hybrid_facility             tinyint DEFAULT 0 NOT NULL,
+  zoom_start_time             TIME DEFAULT NULL,
+  zoom_end_time               TIME DEFAULT NULL,
   meeting_link                text DEFAULT NULL,
   other_requirement           text DEFAULT NULL,
 
