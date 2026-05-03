@@ -92,7 +92,7 @@ $db_persist = false;
 
 
 $mrbs_company = "PGIM Academic Centre";
-$vocab_override['en']['mrbs'] = "Welcome";
+$vocab_override['en']['mrbs'] = "PGIM Booking System";
 
 $mrbs_company_logo = "./images/logo.png";    // name of your logo file.   This example assumes it is in the MRBS directory
 
