@@ -325,7 +325,11 @@ if (!$is_ajax)
 
   if (count($is_mandatory_field))
   {
-    foreach ($is_mandatory_field as $field => $value)
+    // Exempt meeting_link from general mandatory check, we handle it conditionally below
+    $temp_mandatory = $is_mandatory_field;
+    unset($temp_mandatory['entry.meeting_link']);
+    
+    foreach ($temp_mandatory as $field => $value)
     {
       $field = preg_replace('/^entry\./', '', $field);
       if ($value)
@@ -351,6 +355,22 @@ if (!$is_ajax)
       {
         invalid_booking("Seat count ($seat_count) cannot exceed room capacity ($capacity).");
       }
+    }
+  }
+  // Custom validation for Hybrid Facility and Zoom Fields
+  if (isset($custom_fields['hybrid_facility']) && $custom_fields['hybrid_facility'] == '1')
+  {
+    if (!isset($custom_fields['meeting_link']) || $custom_fields['meeting_link'] === '')
+    {
+      invalid_booking("Zoom or Google Meet Link is required when Zoom/Hybrid facility is selected.");
+    }
+    if (!isset($custom_fields['zoom_start_time']) || $custom_fields['zoom_start_time'] === '')
+    {
+      invalid_booking("Zoom Start Time is required when Zoom/Hybrid facility is selected.");
+    }
+    if (!isset($custom_fields['zoom_end_time']) || $custom_fields['zoom_end_time'] === '')
+    {
+      invalid_booking("Zoom End Time is required when Zoom/Hybrid facility is selected.");
     }
   }
 }
