@@ -342,12 +342,29 @@ function create_details_body(array $data, bool $as_html=false, bool $keep_privat
         }
         $class = ($keep_private && isset($is_private_field["entry.$key"]) && $is_private_field["entry.$key"]) ? "private" : "";
         
-        // Custom logic to make the meeting link clickable if it's a valid URL
-        if ($as_html && $key === 'meeting_link' && !empty($value) && (preg_match('/^https?:\/\//i', (string)$value)))
+        // Custom logic for meeting link and zoom times: visibility restricted to Admin or Creator
+        if ($key === 'meeting_link' || $key === 'zoom_start_time' || $key === 'zoom_end_time')
         {
-          $escaped_value = escape_html($value);
-          $link_html = '<a href="' . $escaped_value . '" target="_blank" class="meeting_link_button">Click to Join Meeting</a>';
-          $tbody .= "<tr>\n<td>$label</td>\n<td" . ((!empty($class)) ? " class=\"$class\"" : '') . ">$link_html</td>\n</tr>\n";
+          $mrbs_user = session()->getCurrentUser();
+          $is_admin = (isset($data['room_id'])) ? is_book_admin($data['room_id']) : is_book_admin();
+          $is_creator = (isset($mrbs_user) && isset($data['create_by']) && strcasecmp_locale($mrbs_user->username, $data['create_by']) === 0);
+          
+          if (!$is_admin && !$is_creator)
+          {
+            // Do not show the Zoom related fields if the user is not an admin or the creator
+            break; 
+          }
+          
+          if ($key === 'meeting_link' && $as_html && !empty($value) && (preg_match('/^https?:\/\//i', (string)$value)))
+          {
+            $escaped_value = escape_html($value);
+            $link_html = '<a href="' . $escaped_value . '" target="_blank" class="meeting_link_button">Click to Join Meeting</a>';
+            $tbody .= "<tr>\n<td>$label</td>\n<td" . ((!empty($class)) ? " class=\"$class\"" : '') . ">$link_html</td>\n</tr>\n";
+          }
+          else
+          {
+            $tbody .= create_details_row($label, $value, $as_html, $class);
+          }
         }
         else
         {
