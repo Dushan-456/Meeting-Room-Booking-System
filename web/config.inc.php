@@ -132,7 +132,7 @@ $vocab_override['en']['entry.meeting_link'] = "Zoom or Google Meet Link";
 $vocab_override['en']['entry.other_requirement'] = "Other Requirement";
 
 // Field Order
-$edit_entry_field_order = array('create_by', 'name', 'description', 'start_time', 'end_time', 'room_id', 'type', 'confirmation_status', 'privacy_status', 'seat_count', 'event_type', 'internet', 'laptop', 'sound_system', 'projector', 'tv', 'hybrid_facility', 'meeting_link', 'other_requirement');
+// (Order set below)
 
 // Select Options
 $select_options['entry.event_type'] = array(
@@ -151,13 +151,25 @@ $radio_options['entry.projector'] = array(1 => 'Yes', 0 => 'No');
 $radio_options['entry.tv'] = array(1 => 'Yes', 0 => 'No');
 $radio_options['entry.hybrid_facility'] = array(1 => 'Yes', 0 => 'No');
 
+// Custom Field Labels
+$vocab_override['en']['entry.zoom_start_time'] = "Zoom Start Time";
+$vocab_override['en']['entry.zoom_end_time'] = "Zoom End Time";
+
+// Field Order
+$edit_entry_field_order = array(
+    'create_by','name', 'description', 'start_time', 'end_time', 'room_id', 'type',
+    'seat_count', 'event_type', 'internet', 'laptop', 'sound_system', 
+    'projector', 'tv', 'hybrid_facility', 'zoom_start_time', 'zoom_end_time', 
+    'meeting_link', 'other_requirement'
+);
+
 // Custom JavaScript
 $custom_js_url = 'js/custom.js';
 
 
 // Custom buttons in date heading
 $custom_date_buttons = array(
-    array('text' => 'PGIM Main Premises ', 'url' => 'https://example.com/2'),
-    array('text' => 'Academic Centre', 'url' => 'https://example.com/1'),
-    array('text' => 'Board Room V', 'url' => 'https://example.com/3')
+    array('text' => 'PGIM Main Premises ', 'url' => 'https://example.com/2', 'active' => false),
+    array('text' => 'Academic Centre', 'url' => 'https://example.com/1', 'active' => true),
+    array('text' => 'Board Room V', 'url' => 'https://example.com/3', 'active' => false)
 );
