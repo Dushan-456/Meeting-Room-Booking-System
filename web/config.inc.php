@@ -169,7 +169,7 @@ $custom_js_url = 'js/custom.js';
 
 // Custom buttons in date heading
 $custom_date_buttons = array(
-    array('text' => 'PGIM Main Premises ', 'url' => 'https://example.com/2', 'active' => false),
-    array('text' => 'Academic Centre', 'url' => 'https://example.com/1', 'active' => true),
-    array('text' => 'Board Room V', 'url' => 'https://example.com/3', 'active' => false)
+    array('text' => 'PGIM Main Premises ', 'url' => '#', 'active' => false),
+    array('text' => 'Academic Centre', 'url' => '#', 'active' => true),
+    array('text' => 'Board Room V', 'url' => '#', 'active' => false)
 );
