@@ -2703,11 +2703,6 @@ table.dwm_main td {
     border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Horizontal Cell Borders (using bottom border on each cell) */
-table.dwm_main tbody td,
-table.dwm_main tbody th {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
 
 /* Highlighted Column/Row Borders */
 table.dwm_main th.highlight,
