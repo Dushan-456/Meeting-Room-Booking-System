@@ -2680,3 +2680,48 @@ nav.location .select2-container--default:hover .select2-selection--single {
         font-size: 16px !important; /* Prevent iOS zoom */
     }
 }
+
+/* =============================================================================
+   Calendar Table Border Enhancements
+   ========================================================================== */
+
+/* Main Table Container Border */
+.table_container {
+    border: 1px solid rgba(56, 189, 248, 0.4) !important; /* Sky Blue accent border */
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.08) !important;
+}
+
+/* Main Table Header Borders */
+table.dwm_main thead th,
+table.dwm_main tfoot th,
+table.dwm_main tbody th {
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+/* Vertical Cell Borders */
+table.dwm_main td {
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Horizontal Cell Borders (using bottom border on each cell) */
+table.dwm_main tbody td,
+table.dwm_main tbody th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Highlighted Column/Row Borders */
+table.dwm_main th.highlight,
+table.dwm_main td.new_hover {
+    border-color: rgba(56, 189, 248, 0.6) !important;
+    background-color: rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Booked Cell Borders - Making them more defined */
+table.dwm_main td.booked {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Month View Cell Header Border */
+#month_main div.cell_header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
