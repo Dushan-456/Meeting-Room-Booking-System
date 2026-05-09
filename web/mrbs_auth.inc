@@ -103,7 +103,7 @@ function get_page_level($page)
       break;
 
     case 'view_entry.php':
-      $result = ($auth['allow_anonymous_booking']) ? 0 : 1;
+      $result = 0;
       break;
 
     // These pages are set to have a minimum access level of 1 as ordinary users
