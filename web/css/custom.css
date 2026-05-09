@@ -928,6 +928,18 @@ body.view_entry table#entry td:first-child {
     letter-spacing: 0.05em !important;
 }
 
+/* Email links in entry details (Created by, Modified by) */
+body.view_entry table#entry td a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s ease !important;
+}
+
+body.view_entry table#entry td a:hover {
+    opacity: 0.8 !important;
+    text-decoration: underline !important;
+}
+
 /* View Entry Action Buttons */
 body.view_entry #view_entry_nav {
     display: flex !important;
