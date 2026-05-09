@@ -84,6 +84,10 @@ ALTER TABLE `mrbs_area`
   ADD COLUMN `periods` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
   AFTER `enable_periods`;
 
+-- 1i-fix. Populate periods with empty JSON array for existing areas
+--         (The PHP code calls json_decode() on this column; NULL causes a fatal error in PHP 8+)
+UPDATE `mrbs_area` SET `periods` = '["Period 1","Period 2"]' WHERE `periods` IS NULL;
+
 -- 1j. Add times_along_top column (NEW in new schema)
 ALTER TABLE `mrbs_area`
   ADD COLUMN `times_along_top` tinyint NOT NULL DEFAULT 0
@@ -160,16 +164,16 @@ ALTER TABLE `mrbs_repeat`
 ALTER TABLE `mrbs_repeat`
   CHANGE COLUMN `rep_num_weeks` `rep_interval` smallint DEFAULT 1 NOT NULL;
 
--- 3d. Add new facility/equipment columns
+-- 3d. Add new facility/equipment columns (nullable so old entries show '---' not 'No')
 ALTER TABLE `mrbs_repeat`
-  ADD COLUMN `seat_count`        int DEFAULT 0 NOT NULL          AFTER `ical_sequence`,
+  ADD COLUMN `seat_count`        int DEFAULT NULL                 AFTER `ical_sequence`,
   ADD COLUMN `event_type`        varchar(50) DEFAULT NULL         AFTER `seat_count`,
-  ADD COLUMN `internet`          tinyint DEFAULT 0 NOT NULL       AFTER `event_type`,
-  ADD COLUMN `laptop`            tinyint DEFAULT 0 NOT NULL       AFTER `internet`,
-  ADD COLUMN `sound_system`      tinyint DEFAULT 0 NOT NULL       AFTER `laptop`,
-  ADD COLUMN `projector`         tinyint DEFAULT 0 NOT NULL       AFTER `sound_system`,
-  ADD COLUMN `tv`                tinyint DEFAULT 0 NOT NULL       AFTER `projector`,
-  ADD COLUMN `hybrid_facility`   tinyint DEFAULT 0 NOT NULL       AFTER `tv`,
+  ADD COLUMN `internet`          tinyint DEFAULT NULL             AFTER `event_type`,
+  ADD COLUMN `laptop`            tinyint DEFAULT NULL             AFTER `internet`,
+  ADD COLUMN `sound_system`      tinyint DEFAULT NULL             AFTER `laptop`,
+  ADD COLUMN `projector`         tinyint DEFAULT NULL             AFTER `sound_system`,
+  ADD COLUMN `tv`                tinyint DEFAULT NULL             AFTER `projector`,
+  ADD COLUMN `hybrid_facility`   tinyint DEFAULT NULL             AFTER `tv`,
   ADD COLUMN `zoom_start_time`   TIME DEFAULT NULL                AFTER `hybrid_facility`,
   ADD COLUMN `zoom_end_time`     TIME DEFAULT NULL                AFTER `zoom_start_time`,
   ADD COLUMN `meeting_link`      text DEFAULT NULL                AFTER `zoom_end_time`,
@@ -216,16 +220,16 @@ ALTER TABLE `mrbs_entry`
   ADD COLUMN `registration_closes`         int DEFAULT 0 NOT NULL         AFTER `registration_opens_enabled`,
   ADD COLUMN `registration_closes_enabled` tinyint DEFAULT 0 NOT NULL     AFTER `registration_closes`;
 
--- 4f. Add new facility/equipment columns
+-- 4f. Add new facility/equipment columns (nullable so old entries show '---' not 'No')
 ALTER TABLE `mrbs_entry`
-  ADD COLUMN `seat_count`        int DEFAULT 0 NOT NULL          AFTER `registration_closes_enabled`,
+  ADD COLUMN `seat_count`        int DEFAULT NULL                 AFTER `registration_closes_enabled`,
   ADD COLUMN `event_type`        varchar(50) DEFAULT NULL         AFTER `seat_count`,
-  ADD COLUMN `internet`          tinyint DEFAULT 0 NOT NULL       AFTER `event_type`,
-  ADD COLUMN `laptop`            tinyint DEFAULT 0 NOT NULL       AFTER `internet`,
-  ADD COLUMN `sound_system`      tinyint DEFAULT 0 NOT NULL       AFTER `laptop`,
-  ADD COLUMN `projector`         tinyint DEFAULT 0 NOT NULL       AFTER `sound_system`,
-  ADD COLUMN `tv`                tinyint DEFAULT 0 NOT NULL       AFTER `projector`,
-  ADD COLUMN `hybrid_facility`   tinyint DEFAULT 0 NOT NULL       AFTER `tv`,
+  ADD COLUMN `internet`          tinyint DEFAULT NULL             AFTER `event_type`,
+  ADD COLUMN `laptop`            tinyint DEFAULT NULL             AFTER `internet`,
+  ADD COLUMN `sound_system`      tinyint DEFAULT NULL             AFTER `laptop`,
+  ADD COLUMN `projector`         tinyint DEFAULT NULL             AFTER `sound_system`,
+  ADD COLUMN `tv`                tinyint DEFAULT NULL             AFTER `projector`,
+  ADD COLUMN `hybrid_facility`   tinyint DEFAULT NULL             AFTER `tv`,
   ADD COLUMN `zoom_start_time`   TIME DEFAULT NULL                AFTER `hybrid_facility`,
   ADD COLUMN `zoom_end_time`     TIME DEFAULT NULL                AFTER `zoom_start_time`,
   ADD COLUMN `meeting_link`      text DEFAULT NULL                AFTER `zoom_end_time`,
