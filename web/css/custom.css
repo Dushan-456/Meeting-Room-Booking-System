@@ -1411,6 +1411,8 @@ body.admin .contents input[type="number"] {
     padding: 10px 15px !important;
     border-radius: 10px !important;
     font-size: 0.95rem !important;
+    min-height: 44px !important;
+    line-height: 1.4 !important;
 }
 
 body.admin .contents select option,
