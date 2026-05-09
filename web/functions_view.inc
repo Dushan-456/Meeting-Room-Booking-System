@@ -312,6 +312,10 @@ function create_details_body(array $data, bool $as_html=false, bool $keep_privat
           {
             $value = $data[$key];  // Will have been set previously
           }
+          elseif (!isset($data[$key]) || is_null($data[$key]))
+          {
+            $value = '---';  // Not specified (old entry before this field existed)
+          }
           else
           {
             $value = empty($data[$key]) ? get_vocab("no") : get_vocab("yes");
