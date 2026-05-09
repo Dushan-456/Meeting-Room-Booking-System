@@ -608,12 +608,14 @@ body.edit_entry #main.standard [style*="display: none"] {
 }
 
 /* Specific layout for Seat Count field to stack hints/errors below input */
-.seat_count_field {
+.seat_count_field, .name_field, .type_field {
     flex-wrap: wrap !important;
 }
 
 .seat_count_field .field_hint,
-.seat_count_field .field_error {
+.seat_count_field .field_error,
+.name_field .field_hint,
+.type_field .field_hint {
     flex: 0 0 100% !important;
     margin-left: 204px !important; /* Label 180px + Gap 24px */
     width: auto !important;
