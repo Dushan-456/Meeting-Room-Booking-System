@@ -1468,14 +1468,60 @@ body.edit_entry_handler input[name="back_button"]:hover {
 
 
 /* =============================================================================
-   Rooms Admin Page Modernization (admin.php)
+   Rooms Admin Page Modernization (admin.php) - LAYOUT FIX
    ========================================================================== */
 
+/* Main contents: flex column to stack everything vertically */
 body.admin .contents {
     color: #f8fafc !important;
     padding-top: 20px !important;
     max-width: 85%;
     margin: auto;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Override the old float-based layout from mrbs.css.php */
+body.admin div#area_form,
+body.admin div#room_form {
+    float: none !important;
+    width: 100% !important;
+}
+
+body.admin #area_form form {
+    float: none !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+body.admin .areaChangeForm div {
+    float: none !important;
+}
+
+body.admin #area_form label[for="area_select"] {
+    float: none !important;
+}
+
+body.admin .contents h2 {
+    clear: none !important;
+    float: none !important;
+}
+
+body.admin div#div_custom_html {
+    float: none !important;
+    padding-left: 0 !important;
+}
+
+/* Room table should take full width */
+body.admin div#room_info {
+    overflow-x: auto !important;
+}
+
+body.admin .form_admin {
+    float: none !important;
 }
 
 body.admin .contents h2 {
