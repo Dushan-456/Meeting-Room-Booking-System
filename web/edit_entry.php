@@ -130,7 +130,15 @@ function get_field_name(string $value, bool $disabled=false) : Field
                   'required' => true,
                   'disabled' => $disabled);
 
-  return get_field_entry_input($params);
+  $field = get_field_entry_input($params);
+
+  $hint = new \MRBS\Form\ElementDiv();
+  $hint->setAttribute('class', 'field_hint')
+       ->setAttribute('style', 'font-size: 0.85em; color: #666; margin-top: 4px; display: block;')
+       ->setText("Name of the Lecture and Lecturer / BOS /Sp. Board");
+  $field->addElement($hint);
+
+  return $field;
 }
 
 
@@ -557,7 +565,13 @@ function get_field_type(string $value, bool $disabled=false) : ?FieldSelect
         ->setControlAttributes(array('name'     => 'type',
                                      'disabled' => $disabled,
                                      'required' => !empty($is_mandatory_field['entry.type'])))
-        ->addSelectOptions($options, $value, true);
+        ->addSelectOptions($options, $value === '' || $value === null ? 'I' : $value, true);
+
+  $hint = new \MRBS\Form\ElementDiv();
+  $hint->setAttribute('class', 'field_hint')
+       ->setAttribute('style', 'font-size: 0.85em; color: #666; margin-top: 4px; display: block;')
+       ->setText("Internal : PGIM Programmes , External : Hired by outsiders");
+  $field->addElement($hint);
 
   return $field;
 }
