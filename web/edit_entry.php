@@ -131,10 +131,11 @@ function get_field_name(string $value, bool $disabled=false) : Field
                   'disabled' => $disabled);
 
   $field = get_field_entry_input($params);
+  $field->addClass('name_field');
 
   $hint = new \MRBS\Form\ElementDiv();
   $hint->setAttribute('class', 'field_hint')
-       ->setAttribute('style', 'font-size: 0.85em; color: #666; margin-top: 4px; display: block;')
+       ->setAttribute('style', 'font-size: 0.85em; color: #b47501ff; margin-top: 4px; display: block;')
        ->setText("Name of the Lecture and Lecturer / BOS /Sp. Board");
   $field->addElement($hint);
 
@@ -560,6 +561,7 @@ function get_field_type(string $value, bool $disabled=false) : ?FieldSelect
   }
 
   $field = new FieldSelect();
+  $field->addClass('type_field');
 
   $field->setLabel(get_vocab('type'))
         ->setControlAttributes(array('name'     => 'type',
@@ -569,7 +571,7 @@ function get_field_type(string $value, bool $disabled=false) : ?FieldSelect
 
   $hint = new \MRBS\Form\ElementDiv();
   $hint->setAttribute('class', 'field_hint')
-       ->setAttribute('style', 'font-size: 0.85em; color: #666; margin-top: 4px; display: block;')
+       ->setAttribute('style', 'font-size: 0.85em; color: #b47501ff; margin-top: 4px; display: block;')
        ->setText("Internal : PGIM Programmes , External : Hired by outsiders");
   $field->addElement($hint);
 
