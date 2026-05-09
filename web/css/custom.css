@@ -1630,12 +1630,27 @@ body.admin .contents .button:hover {
 body.admin .contents select,
 body.admin .contents input[type="text"],
 body.admin .contents input[type="number"] {
-    background: rgba(15, 23, 42, 0.8) !important;
+    background: rgba(15, 23, 42, 0.95) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #ffffff !important;
     padding: 10px 15px !important;
     border-radius: 10px !important;
     font-size: 0.95rem !important;
+}
+
+/* Dropdown option & optgroup text must be visible */
+body.admin .contents select option,
+body.admin .contents select optgroup {
+    background: #0f172a !important;
+    color: #f1f5f9 !important;
+}
+
+/* Legend text (Add Area / Add Room titles) */
+body.admin .contents legend {
+    color: #ffffff !important;
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    padding: 0 8px !important;
 }
 
 body.admin .contents input[type="submit"] {
