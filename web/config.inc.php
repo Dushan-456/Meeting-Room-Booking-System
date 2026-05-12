@@ -173,3 +173,15 @@ $custom_date_buttons = array(
     array('text' => 'Academic Centre', 'url' => '#', 'active' => true),
     array('text' => 'Board Room V', 'url' => '#', 'active' => false)
 );
+
+
+
+
+
+
+
+
+
+
+
+// 🟩🟩🟩  Please remove unnecessary or duplicate bookings. 🟩🟩🟩  When placing room bookings, kindly mention all requirements clearly and accurately.  🟩🟩🟩 If the meeting or lecture includes a Zoom session, please provide the Zoom link to the section.  🟩🟩🟩 Kindly mention the exact start and end times of the event. 🟩🟩🟩 Please specify the expected number of participants.
