@@ -2809,3 +2809,231 @@ table.dwm_main td.booked {
 #month_main div.cell_header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+
+/* =============================================================================
+   Toggle Button & Light Theme Overrides
+   ========================================================================== */
+
+/* Toggle Button Styling */
+.theme-toggle-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #f8fafc !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    margin-left: 15px !important;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Light Theme Overrides */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="light"] {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] a { color: #2563eb !important; }
+[data-theme="light"] a:hover { color: #1d4ed8 !important; }
+
+[data-theme="light"] header.banner {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+}
+[data-theme="light"] header.banner .company a { color: #0f172a !important; }
+[data-theme="light"] header.banner .menu a { color: #475569 !important; }
+[data-theme="light"] header.banner .menu a:hover,
+[data-theme="light"] header.banner .menu a.active {
+    color: #2563eb !important;
+    background: rgba(37, 99, 235, 0.1) !important;
+}
+[data-theme="light"] .theme-toggle-btn {
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    color: #0f172a !important;
+}
+[data-theme="light"] .theme-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] nav.main_calendar,
+[data-theme="light"] .date_heading {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] .date_heading h2 { color: #0f172a !important; }
+
+[data-theme="light"] input[type="submit"],
+[data-theme="light"] button.theme-toggle-btn {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] input[type="submit"] {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+[data-theme="light"] input[type="submit"]:hover {
+    background: #1d4ed8 !important;
+}
+
+[data-theme="light"] .table_container {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+}
+[data-theme="light"] table.dwm_main th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] table.dwm_main td {
+    border-color: rgba(0, 0, 0, 0.05) !important;
+}
+[data-theme="light"] table.dwm_main td:not(.booked):hover {
+    background: rgba(37, 99, 235, 0.1) !important;
+}
+[data-theme="light"] table.dwm_main td.booked {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .contents form,
+[data-theme="light"] #logon.standard,
+[data-theme="light"] #edit_room fieldset,
+[data-theme="light"] body.admin .contents fieldset,
+[data-theme="light"] body.pending .contents,
+[data-theme="light"] body.edit_users .contents,
+[data-theme="light"] body.report .contents,
+[data-theme="light"] body.import .contents,
+[data-theme="light"] body.help .contents {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] legend,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] .contents > h2 {
+    color: #0f172a !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] label,
+[data-theme="light"] .field_hint { color: #475569 !important; }
+
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="password"],
+[data-theme="light"] input[type="number"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] input[type="date"],
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2) !important;
+    background: #ffffff !important;
+}
+
+[data-theme="light"] select option,
+[data-theme="light"] select optgroup {
+    background: #ffffff !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] table.admin_table th {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] table.admin_table td {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] table.admin_table tr:hover td {
+    background: #f1f5f9 !important;
+}
+
+[data-theme="light"] .select2-dropdown {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+[data-theme="light"] .select2-results__option {
+    color: #0f172a !important;
+}
+[data-theme="light"] .select2-results__option--highlighted[aria-selected] {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+[data-theme="light"] .select2-results__option[aria-selected="true"] {
+    background: rgba(37, 99, 235, 0.1) !important;
+    color: #2563eb !important;
+}
+
+[data-theme="light"] .minicalendar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+[data-theme="light"] .minicalendar th {
+    color: #0f172a !important;
+}
+[data-theme="light"] .minicalendar td.empty {
+    background: transparent !important;
+}
+[data-theme="light"] .minicalendar td:not(.empty) {
+    background: #ffffff !important;
+    color: #0f172a !important;
+}
+[data-theme="light"] .minicalendar td.current {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+[data-theme="light"] .minicalendar td:hover:not(.empty) {
+    background: #e2e8f0 !important;
+}
+
+[data-theme="light"] .message_top {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #dc2626 !important;
+}
+
+[data-theme="light"] body.edit_message #message.standard {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #0f172a !important;
+}
+[data-theme="light"] body.edit_message #message fieldset legend {
+    color: #2563eb !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+[data-theme="light"] body.edit_message #message input[name="back_button"] {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+}
