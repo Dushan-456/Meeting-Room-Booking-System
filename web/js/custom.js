@@ -256,35 +256,4 @@ $(document).on('ready page_ready tableload', function() {
 
     // Initial check on load
     updateMaxCapacity();
-
-    // --- 5. Theme Toggle Logic ---
-    function initThemeToggle() {
-        var $toggleBtn = $('#theme-toggle');
-        if ($toggleBtn.length === 0) return;
-
-        var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        updateToggleIcon(currentTheme);
-
-        $toggleBtn.off('click').on('click', function(e) {
-            e.preventDefault();
-            var newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('mrbs-theme', newTheme);
-            
-            updateToggleIcon(newTheme);
-        });
-
-        function updateToggleIcon(theme) {
-            if (theme === 'light') {
-                $('.sun-icon').hide();
-                $('.moon-icon').show();
-            } else {
-                $('.sun-icon').show();
-                $('.moon-icon').hide();
-            }
-        }
-    }
-
-    initThemeToggle();
 });
